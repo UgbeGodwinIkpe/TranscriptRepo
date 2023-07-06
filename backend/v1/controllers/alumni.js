@@ -3,8 +3,13 @@
 // =============================
 require('dotenv').config()
 const Alumni = require('../models/alumni'),
+    mongoose = require('mongoose'),
     jwt = require('jsonwebtoken'),
-    crypto = require('crypto')
+    crypto = require('crypto'),
+    fs = require('fs')
+
+const htmlContent = fs.readFileSync('./views/welcomeEmail.html', 'utf-8')
+
 
 // =============================
 // === funtion to create token==
@@ -38,6 +43,33 @@ exports.getAllAlumnus = async (req, res) => {
     }
 }
 
+// function to get single Alumni
+exports.getAlumniById = async ( req, res) => {
+    const {id} = req.params
+
+    try {
+        // verify if id is valid
+        if(!mongoose.Types.ObjectId.isValid(id)){
+            throw Error('not a valid id')   
+        }
+
+        // find alumni using db using id
+        let alumni = await Alumni.findById(id)
+
+        // if not found throw error
+        if(!alumni){
+            throw Error(`resource could ot be located`)
+        }
+
+        // return data and message as json
+        res.status(200).json({message: 'successful', data: alumni})
+
+    } catch (error) {
+        // return status and error as json
+        return res.status(403).json({error: error.message})
+    }
+}
+
 
 //function to create new alumni account
 exports.createAlumni = async (req, res) => {
@@ -46,17 +78,17 @@ exports.createAlumni = async (req, res) => {
     let {fullName, emailAddress, matricNo, password} = req.body
 
    try {
-        // signup user using static function   
-        const alumni = await Alumni.signup(fullName, emailAddress, matricNo, password)
-
-        // create a token
-        const token = createToken(alumni._id)
-        
         // generate verification code
         let verificationCode = await crypto.randomBytes(4).toString('hex');
 
+        // signup user using static function   
+        const alumni = await Alumni.signup(fullName, emailAddress, matricNo, password, verificationCode)
+
+        // create a token
+        const token = createToken(alumni._id)
+
         // send welcome email
-        await Alumni.sendEmail(emailAddress, 'Welcome to Transcript-Digita', `Our Team is working around the clock the ensure smooth requesting, monitoring and delivery of transcripts within Nigerian universities. verfication code: ${verificationCode}`)
+        await Alumni.sendEmail(emailAddress, 'Welcome to Transcript-Digita', htmlContent)
 
         // return status code and data as json
         return res.status(200).json({alumni, token}) 
@@ -67,5 +99,114 @@ exports.createAlumni = async (req, res) => {
    }
 }
 
+
+// verify a recently registered user
+exports.verifyAlumnus = async (req, res) => {
+   // get alumnusId and verificationCode from user parameters
+   const {alumniId, verificationCode} = req.params
+   
+    try {
+        // verify if id is valid
+        if(!mongoose.Types.ObjectId.isValid(alumniId)){
+            throw Error('not a valid id')   
+        }
+
+        // find alumnus in database
+        const foundAlumni = await Alumni.findById(alumniId)
+
+        // if user not found in database throw error
+        if(!foundAlumni){
+            throw Error('This user doesnt exist in our database')
+        }
+
+        // not match throw error
+        if(verificationCode != foundAlumni.verfificationCode){
+            throw Error('Incorrect verfication code')
+        }
+
+        // compare params code with found users verification code
+        if(verificationCode === foundAlumni.verfificationCode){
+            let verifiedAlumni = await Alumni.findByIdAndUpdate(alumniId, {isVerified: true})
+            return res.status(200).json({message: 'successfully updated', data: verifiedAlumni})
+        }
+
+    } catch (error) {
+        // return error code and message 
+        return res.status(400).json({error: error.message})
+    }
+}
+
+// login Alumni
+exports.loginAlumnus = async (req, res) => {
+    const {emailAddress, password} = req.body
+
+    try {
+        // login alumni
+        const alumni = await Alumni.login(emailAddress, password)
+
+        if(!alumni){
+            throw Error('Login unsucessful')
+        }
+        // create a token
+        const token = createToken(alumni._id)
+
+        return res.status(200).json({alumni, token})
+
+    } catch (error) {
+        // return error code and message 
+        return res.status(400).json({error: error.message})
+    }
+} 
+
+// update alumni information
+exports.updateAlumni = async (req, res) => {
+    const {id} = req.params
+    const {
+        fullName,
+        matricNo,
+        phoneNumber,
+        emailAddress,
+        paymentDetails,
+        yearOfgraduation,
+        monthOfGraduation,
+        departmant
+    } = req.body
+
+    try {
+        // verify if id is valid
+        if(!mongoose.Types.ObjectId.isValid(alumniId)){
+            throw Error('not a valid id')   
+        }
+        
+    } catch (error) {
+        // return error code and message 
+        return res.status(400).json({error: error.message})
+    }
+}
+
+// delete Alumni
+exports.deleteAlumni = async (req, res) => {
+    const {id} = req.params
+
+    try {
+        // verify if id is valid
+        if(!mongoose.Types.ObjectId.isValid(id)){
+            throw Error('not a valid id')   
+        }
+
+        // search alumni db and delete item with the id
+        let deletedAlumni = await Alumni.findByIdAndDelete(id)
+
+        if(!deletedAlumni){
+            throw Error('this resource could not be deleted, it seems it doest exist in our database')
+        }
+
+        return res.status(200).json({message: 'successfully deleted', data: deletedAlumni})
+
+    } catch (error) {
+        // return error code and message 
+        return res.status(400).json({error: error.message})
+    }
+}
 
 module.exports = exports

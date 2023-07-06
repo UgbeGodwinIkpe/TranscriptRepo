@@ -8,7 +8,7 @@ const mongoose = require('mongoose')
 // ==================================
 // ====== connecting to database ====
 // ==================================
-mongoose.connect(process.env.LOCALE_URI , { useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(process.env.MONGODB_URI , { useNewUrlParser: true, useUnifiedTopology: true})
     .then(()=>{
         console.log('Database connected !!!')
     })

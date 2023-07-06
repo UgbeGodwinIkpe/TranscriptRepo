@@ -20,8 +20,9 @@ const alumniSchema = new mongoose.Schema({
     emailAddress:       {type: String, required: true},
     transcripts:        [],
     paymentDetails:     [],
-    isActive:           {type: Boolean, default: false},
-    isOnline:           {type: Boolean, default: true},
+    verfificationCode:  {type: String},
+    isActive:           {type: Boolean, default: true},
+    isVerified:         {type: Boolean, default: false},
     isDisabled:         {type: Boolean, default: false},
     isRestricted:       {type: Boolean, default: false}
 
@@ -32,7 +33,7 @@ const alumniSchema = new mongoose.Schema({
 // ==================================
 
 // signup user function
-alumniSchema.statics.signup = async function (fullName, emailAddress, matricNo, password) {
+alumniSchema.statics.signup = async function (fullName, emailAddress, matricNo, password, verfificationCode) {
 
     // check if all inputs are filled
     if(!fullName || !emailAddress || !password || !matricNo) {
@@ -62,9 +63,45 @@ alumniSchema.statics.signup = async function (fullName, emailAddress, matricNo, 
     const hash = await bcrypt.hash(password, salt)
 
     // creating new alumni in database
-    const alumni = await this.create({fullName, emailAddress, matricNo, password: hash})
+    const alumni = await this.create({fullName, emailAddress, matricNo, password: hash, verfificationCode})
 
     // returning the saved user
+    return alumni
+}
+
+// login user
+alumniSchema.statics.login = async function (emailAddress, password) {
+    // validation
+    if(!emailAddress || !password){
+        throw Error('All fields must be filled')
+    }
+ 
+     // find an email in database   
+    const alumni = await this.findOne({emailAddress})
+ 
+     // not exist throw error   
+    if(!alumni){
+        throw Error('Incorrect email')
+    }
+    
+    // if account inactive throw error    
+    if(!alumni.isVerified){
+        throw Error('sorry your account is disabled')
+    }
+
+    // if account inactive throw error    
+    if(!alumni.isActive){
+         throw Error('sorry your account is disabled')
+    }
+    
+    // compare password with users password
+    const match = await bcrypt.compare(password, alumni.password)
+    
+    // throw an error if not match
+    if(!match){
+        throw Error('Incorrect password')
+    }
+ 
     return alumni
 }
 
@@ -84,7 +121,7 @@ alumniSchema.statics.sendEmail = async function (email, subject, message) {
         from: process.env.EMAIL_USERNAME,
         to: email,
         subject: subject,
-        text: message
+        html: message
 
     }, (err, sent)=>{    
         err ? console.log('error send email') : console.log('succesfully sent', sent)     
@@ -92,6 +129,10 @@ alumniSchema.statics.sendEmail = async function (email, subject, message) {
     })
 }
 
+// get a single user
+alumniSchema.statics.getAlumniById = async function (id){
+
+}
 
 // ==================================
 // ==== modeling alumni with schema==

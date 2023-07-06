@@ -10,18 +10,25 @@ const express = require('express'),
 // ==== create new Alumni ==========
 // ================================= 
 router.route('/')
-    .get()
+    .get(controller.getAllAlumnus)
     .post(controller.createAlumni)
 
+
+router.route('/login')
+    .post(controller.loginAlumnus)
+    
+    
 // ==================================
 // === get single alumni ============
 // === update alumni details ========
 // === delete alumni ================
 //  =================================
-
 router.route('/:id')
-    .get()
+    .get(controller.getAlumniById)
     .patch()
-    .delete()
+    .delete(controller.deleteAlumni)
+
+router.route('/:alumniId/:verificationCode')
+    .patch(controller.verifyAlumnus)
 
 module.exports = router
