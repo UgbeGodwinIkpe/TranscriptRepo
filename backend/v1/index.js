@@ -4,10 +4,14 @@
 require('dotenv').config()
 const express = require('express'),
       app    = express(),
+      cors = require('cors'),
+      path = require('path'),
       bodyParser = require('body-parser'),
       models = require('./models/'),
       alumniRoutes = require('./routes/alumni')
       
+// using cors 
+app.use(cors())
 
 
 // =========================================================
