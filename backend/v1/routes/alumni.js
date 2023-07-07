@@ -3,14 +3,15 @@
 // =================================
 const express = require('express'),
     router = express.Router(),
-    controller = require('../controllers/alumni')
+    controller = require('../controllers/alumni'),
+    {isAuth} = require('../middleware/auth')
 
 // =================================
 // ==== retrieve all Alumnus =======
 // ==== create new Alumni ==========
 // ================================= 
 router.route('/')
-    .get(controller.getAllAlumnus)
+    .get(isAuth, controller.getAllAlumnus)
     .post(controller.createAlumni)
 
 
