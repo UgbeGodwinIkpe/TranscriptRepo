@@ -1,11 +1,43 @@
-import { useState } from 'react'
+// rrd imports
+import {
+  createBrowserRouter,
+  RouterProvider
+} from 'react-router-dom'
+
+import { StyledEngineProvider } from '@mui/material'
+
+// layout imports
+import { Main } from './layouts'
+
+// pages imports
+import { Dashboard, Login } from './pages'
 
 function App() {
 
+  const router = createBrowserRouter([
+    {
+      path:'/',
+      element: <Main/>,
+      children: [
+        {
+          index: true,
+          element: <Dashboard/>
+        },
+
+        {
+          path: '/login',
+          element: <Login/>
+        }
+      ]
+    }
+  ])
+
   return (
-    <>  
-      <h4 className='text-center text-[40px] text-blue-500 animate-bounce'>Enjoy your time here !!</h4>  
-    </>
+    <div>
+      <StyledEngineProvider injectFirst>
+        <RouterProvider router={router} />
+      </StyledEngineProvider>
+    </div>
   )
 }
 
