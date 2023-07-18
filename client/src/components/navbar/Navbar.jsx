@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 // rrd imports
 import { Link } from 'react-router-dom'
@@ -10,6 +10,7 @@ import { Button } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/keyboardArrowDown';
 
 function Navbar() {
+
   return (
     <div className='shadow p-3 md:p-5 flex justify-between items-center'>
         <div>
@@ -36,12 +37,14 @@ function Navbar() {
         </div>
 
         <div>
-            <Button 
-                variant="contained"
-                className='bg-[#6B3FA0] hover:bg-[#6B3FA0]'
-            >
-              Sign in
-            </Button>
+            <Link to={`/selectlogin`}>
+                <Button 
+                    variant="contained"
+                    className='bg-[#6B3FA0] hover:bg-[#6B3FA0]'
+                >
+                Sign in
+                </Button>
+            </Link>
         </div>
     </div>
   )

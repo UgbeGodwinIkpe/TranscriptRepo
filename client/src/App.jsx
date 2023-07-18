@@ -12,6 +12,9 @@ import { Main } from './layouts'
 // pages imports
 import { Dashboard, Login } from './pages'
 
+// components imports
+import { SelectLogin } from './components'
+
 function App() {
 
   const router = createBrowserRouter([
@@ -25,7 +28,12 @@ function App() {
         },
 
         {
-          path: '/login',
+          path: '/selectlogin',
+          element: <SelectLogin/>
+        },
+
+        {
+          path: '/alumni/login',
           element: <Login/>
         }
       ]
