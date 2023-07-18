@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 import { Button } from '@mui/material';
 
 // materian icon imports
-import KeyboardArrowDownIcon from '@mui/icons-material/keyboardArrowDown';
+// import KeyboardArrowDownIcon from '@mui/icons-material/keyboardArrowDown';
 
 function Navbar() {
 
@@ -27,12 +27,12 @@ function Navbar() {
 
             <div className='flex items-center'>
                 <Link>Services</Link>
-                <KeyboardArrowDownIcon width={20} />
+                {/* <KeyboardArrowDownIcon width={20} /> */}
             </div>
 
             <div className='flex'>
                 <Link>Contact</Link>
-                <KeyboardArrowDownIcon width={20} />
+                {/* <KeyboardArrowDownIcon width={20} /> */}
             </div>
         </div>
 
