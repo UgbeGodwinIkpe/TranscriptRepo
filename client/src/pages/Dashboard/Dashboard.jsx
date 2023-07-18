@@ -1,9 +1,11 @@
 import React from 'react'
+import LandingPage from '../Landing/LandingPage'
 
 function Dashboard() {
   return (
     <div className='flex flex-col'>
-        <h1>dashboard</h1>
+      {/* conditionally show between user dashboard or landing page */}
+        <LandingPage/>
     </div>
   )
 }
