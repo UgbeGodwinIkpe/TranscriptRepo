@@ -10,7 +10,7 @@ import { StyledEngineProvider } from '@mui/material'
 import { Main } from './layouts'
 
 // pages imports
-import { Dashboard, Login } from './pages'
+import { Dashboard, Login, InstitutionLogin } from './pages'
 
 // components imports
 import { SelectLogin } from './components'
@@ -30,6 +30,11 @@ function App() {
         {
           path: '/selectlogin',
           element: <SelectLogin/>
+        },
+
+        {
+          path: '/institution/login',
+          element: <InstitutionLogin/>
         },
 
         {

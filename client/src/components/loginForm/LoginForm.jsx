@@ -7,14 +7,13 @@ import { Link } from 'react-router-dom'
 
 function LoginForm() {
   return (
-    <div className='flex flex-col md:w-4/12 w-full gap-y-4'>
+    <div className='flex flex-col md:w-4/12 w-full gap-y-4 p-3 md:p-0'>
 
       <div className='flex flex-col gap-y-4'>
         <TextField
           id="outlined-email-input"
           label="email address"
           type="email address"
-          className='hover:ring-red-300'
         />
 
         <TextField

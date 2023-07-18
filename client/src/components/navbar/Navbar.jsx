@@ -14,12 +14,12 @@ function Navbar() {
   return (
     <div className='shadow p-3 md:p-5 flex justify-between items-center'>
         <div>
-            <h3 className='font-bold'>TranscriptDigita</h3>
+            <Link to={`/`} className='font-bold'>TranscriptDigita</Link>
         </div>
-        <div className='flex justify-evenly flex-1'>
-            <div className='flex'>
-                <Link>Home</Link>
-            </div>
+        <div className='justify-evenly flex-1 hidden md:flex'>
+            <Link to={`/`} className='flex'>
+                <p>Home</p>
+            </Link>
 
             <div className='flex'>
                 <Link>About</Link>
