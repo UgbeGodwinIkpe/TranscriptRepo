@@ -1,5 +1,11 @@
+// react imports
 import React from 'react'
+
+// pages imprts
 import LandingPage from '../Landing/LandingPage'
+
+// components imports
+import { Sidebar } from '../../components'
 
 function Dashboard() {
   return (
