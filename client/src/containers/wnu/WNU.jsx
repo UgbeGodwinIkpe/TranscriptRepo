@@ -12,13 +12,13 @@ import { Button } from '@mui/material'
 
 function WNU() {
   return (
-    <div className='grid grid-cols-1 md:grid-cols-2'>
+    <div className='grid grid-cols-1 md:grid-cols-2 gap-y-[25px] md:gap-y-0'>
         <div className='flex'>
             <img src={wnuImg} alt="wnuimg" />
         </div>
 
         <div className='flex flex-col gap-y-[50px]'>
-            <h4 className='font-bold md:text-[40px] text-right'>Why need us</h4>
+            <h4 className='font-bold md:text-[40px] text-center  md:text-right'>Why need us</h4>
             <p className='font-light md:text-[16px]'>At Transcriptdigita we understand the challenges and frustrations that can arise when it comes to obtaining your transcripts, That's why we are here to simplify the process and provide you with a seamless solution. Here's why our customers need us</p>
             <div className='flex flex-col gap-y-[16px] md:w-8/12 self-end'>
                 <span className='flex items-center p-2 rounded-full bg-[#F2DF32]'>
