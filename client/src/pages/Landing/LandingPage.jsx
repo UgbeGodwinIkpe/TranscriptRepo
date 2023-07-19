@@ -2,7 +2,7 @@
 import React from 'react'
 
 // containers imports
-import { Header, Services, WNU } from '../../containers'
+import { Contact, Footer, Header, OurPartners, Services, Testimonials, WNU } from '../../containers'
 
 function LandingPage() {
   return (
@@ -10,6 +10,10 @@ function LandingPage() {
         <Header/>
         <WNU/>
         <Services/>
+        <OurPartners/>
+        <Testimonials/>
+        <Contact/>
+        <Footer/>
     </div>
   )
 }
