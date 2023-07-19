@@ -19,8 +19,8 @@ function Services() {
             <div className='flex flex-col border rounded-[5px]'>
                 <img src={servicesImg1} alt="services1" />
                 <div className="flex flex-col p-3">
-                    <h4>Easy Transcript Access</h4>
-                    <ul>
+                    <h4 className='md:text-[20px]'>Easy Transcript Access</h4>
+                    <ul className='font-light p-2 md:text-[16px]'>
                         <li>Instant Access</li>
                         <li>User-Friendly access</li>
                     </ul>
@@ -30,8 +30,8 @@ function Services() {
             <div className='flex flex-col border rounded-[5px]'>
                 <img src={servicesImg2} alt="services1" />
                 <div className="flex flex-col p-3">
-                    <h4>Transcript Request</h4>
-                    <ul>
+                    <h4 className='md:text-[20px]'>Transcript Request</h4>
+                    <ul className='font-light p-2 md:text-[16px]'>
                         <li>Request Management</li>
                         <li>Digital Request</li>
                     </ul>
@@ -41,8 +41,8 @@ function Services() {
             <div className='flex flex-col border rounded-[5px]'>
                 <img src={servicesImg3} alt="services1" />
                 <div className="flex flex-col p-3">
-                    <h4>Comprehensive coverage</h4>
-                    <ul>
+                    <h4 className='md:text-[20px]'>Comprehensive coverage</h4>
+                    <ul className='font-light p-2 md:text-[16px]'>
                         <li>Wide coverage</li>
                         <li>Reliable partnerships</li>
                     </ul>
@@ -52,8 +52,8 @@ function Services() {
             <div className='flex flex-col border rounded-[5px]'>
                 <img src={servicesImg1} alt="services1" />
                 <div className="flex flex-col p-3">
-                    <h4>Fast and Reliable</h4>
-                    <ul>
+                    <h4 className='text-[20px]'>Fast and Reliable</h4>
+                    <ul className='font-light p-2 md:text-[16px]'>
                         <li>Expedited services</li>
                         <li>Trackable Delivery</li>
                     </ul>
