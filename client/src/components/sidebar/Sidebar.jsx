@@ -3,7 +3,7 @@ import React from 'react'
 import {HiOutlineRectangleGroup, HiListBullet, HiOutlineBell, HiOutlineCog6Tooth} from 'react-icons/hi2'
 
 // mui imports
-import { Drawer, List, ListItem, ListItemIcon, ListItemText, Typography } from '@mui/material'
+import { List, ListItem, ListItemIcon, ListItemText } from '@mui/material'
 
 const menuItems = [
     {
