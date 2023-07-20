@@ -10,10 +10,11 @@ import { StyledEngineProvider } from '@mui/material'
 import { Main } from './layouts'
 
 // pages imports
-import { Dashboard, Login, InstitutionLogin, InstitutionSignup, InstitutionDashboard } from './pages'
+import { Dashboard, Login, InstitutionLogin, InstitutionSignup, InstitutionDashboard, ErrorPage } from './pages'
 
 // components imports
 import { SelectLogin } from './components'
+import Error from './pages/Error/Error'
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
     {
       path:'/',
       element: <Main/>,
+      errorElement: <ErrorPage/>,
       children: [
         {
           index: true,
@@ -29,27 +31,32 @@ function App() {
         
         {
           path: '/institution/:id/dashboard',
-          element: <InstitutionDashboard/>
+          element: <InstitutionDashboard/>,
+          errorElement: <ErrorPage/>
         },
 
         {
           path: '/selectlogin',
-          element: <SelectLogin/>
+          element: <SelectLogin/>,
+          errorElement: <ErrorPage/>
         },
 
         {
           path: '/institution/signup',
-          element: <InstitutionSignup/>
+          element: <InstitutionSignup/>,
+          errorElement: <ErrorPage/>
         },
 
         {
           path: '/institution/login',
-          element: <InstitutionLogin/>
+          element: <InstitutionLogin/>,
+          errorElement: <ErrorPage/>
         },
 
         {
           path: '/alumni/login',
-          element: <Login/>
+          element: <Login/>,
+          errorElement: <ErrorPage/>
         }
       ]
     }
