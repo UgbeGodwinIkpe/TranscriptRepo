@@ -6,3 +6,5 @@ export {default as Testimonials} from './testimonials/Testimonials';
 export {default as Contact} from './contact/Contact';
 export {default as Footer} from './footer/Footer';
 export {default as ChartSection} from './chartSection/ChartSection';
+export {default as RecentRequests} from './recentRequests/RecentRequests';
+export {default as TranscriptGrid} from './transcriptGrid/TranscriptGrid';

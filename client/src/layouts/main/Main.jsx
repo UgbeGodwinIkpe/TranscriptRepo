@@ -10,7 +10,7 @@ import { Navbar } from "../../components";
 function Main() {
 
   return (
-    <div className="w-full flex flex-col w-full h-screen ">
+    <div className="w-full flex flex-col w-full h-screen fixed ">
         <Navbar/>
         <div className="flex-1 grid grid-cols-1">
             <Outlet/>
