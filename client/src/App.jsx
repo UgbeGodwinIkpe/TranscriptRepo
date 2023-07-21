@@ -7,10 +7,10 @@ import {
 import { StyledEngineProvider } from '@mui/material'
 
 // layout imports
-import { InstitutionLayout, Main } from './layouts'
+import { AlumniLayout, InstitutionLayout, Main } from './layouts'
 
 // pages imports
-import { Dashboard, Login, InstitutionLogin, InstitutionSignup, InstitutionDashboard, ErrorPage, ForgotPassword, ChangePassword } from './pages'
+import { Login, InstitutionLogin, InstitutionSignup, InstitutionDashboard, ErrorPage, ForgotPassword, ChangePassword, AlumniDashboard, LandingPage } from './pages'
 
 // components imports
 import { SelectLogin } from './components'
@@ -25,7 +25,7 @@ function App() {
       children: [
         {
           index: true,
-          element: <Dashboard/>
+          element: <LandingPage/>,
         },
         {
           path: '/selectlogin',
@@ -75,6 +75,20 @@ function App() {
     
           ]
         },
+
+        {
+          path: '/alumni',
+          element: <AlumniLayout/>,
+          errorElement: <ErrorPage/>,
+          children: [
+            {
+              path: '/alumni/:id/dashboard',
+              element: <AlumniDashboard/>,
+              errorElement: <ErrorPage/>
+            }
+          ]  
+
+        }
 
       ]
     }

@@ -1,14 +1,16 @@
 // react imports
-import React from 'react';
-import { HiOutlineRectangleGroup, HiListBullet, HiOutlineBell, HiOutlineCog6Tooth } from 'react-icons/hi2'
+import React from 'react'
 
-// components imports
-import { Sidebar } from '../../components';
-
-// rrd outlets
+// rrd imports
 import { Outlet } from 'react-router-dom'
 
-function InstitutionLayout() {
+// components import
+import { Sidebar } from '../../components'
+
+// icons imports
+import {HiOutlineRectangleGroup, HiListBullet, HiOutlineBell, HiOutlineCog6Tooth} from 'react-icons/hi2'
+
+function AlumniLayout() {
 
     const menuItems = [
         {
@@ -43,11 +45,12 @@ function InstitutionLayout() {
         <div className='bg-white md:block hidden'>
             <Sidebar menuItems={menuItems}/>
         </div>
+
         <div className='md:col-span-4 grid grid-cols-1'>
-           <Outlet/>
+            <Outlet/>
         </div>
     </div>
   )
 }
 
-export default InstitutionLayout
+export default AlumniLayout
