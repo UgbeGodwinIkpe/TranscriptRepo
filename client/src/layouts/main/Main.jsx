@@ -12,7 +12,7 @@ function Main() {
   return (
     <div className="w-full flex flex-col w-full h-screen fixed ">
         <Navbar/>
-        <div className="flex-1 grid grid-cols-1">
+        <div className="flex-1 grid grid-cols-1 overflow-y-scroll h-auto">
             <Outlet/>
         </div>
     </div>

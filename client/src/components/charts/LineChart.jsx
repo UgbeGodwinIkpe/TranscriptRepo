@@ -42,10 +42,9 @@ function LineChart() {
                     data: [5, 10, 15, 4, 9, 20, 12, 15, 6, 6, 3, 10],
                     borderColor: '#6B3FA0',
                     pointBorderColor : 'transparent',
-                    pointBorderColor: 'transparent',
                     backgroundColor: 'red' ,
                     backgroundColor: '#6B3FA0',
-                    tension: 0.1
+                    tension: 0.3
                 },
             ],
         })

@@ -8,25 +8,25 @@ import { List, ListItem, ListItemIcon, ListItemText } from '@mui/material'
 const menuItems = [
     {
         title: 'Dashboard',
-        icon: <HiOutlineRectangleGroup/>,
+        icon: <HiOutlineRectangleGroup size={20}/>,
         path: ''
     },
 
     {
         title: 'Alumni List',
-        icon: <HiListBullet/>,
+        icon: <HiListBullet size={20}/>,
         path: ''
     },
 
     {
         title: 'Request',
-        icon: <HiOutlineBell/>,
+        icon: <HiOutlineBell size={20}/>,
         path: ''
     },
 
     {
         title: 'Settings',
-        icon: <HiOutlineCog6Tooth/>,
+        icon: <HiOutlineCog6Tooth size={20}/>,
         path: ''
     },
 
