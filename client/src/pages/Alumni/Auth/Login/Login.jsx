@@ -2,7 +2,7 @@
 import React from 'react'
 
 // components imports
-import { LoginForm } from '../../components'
+import { LoginForm } from '../../../../components'
 
 function Login() {
   return (
@@ -12,4 +12,4 @@ function Login() {
   )
 }
 
-export default Login
+export default Login ;

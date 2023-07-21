@@ -7,7 +7,7 @@ import {
 import { StyledEngineProvider } from '@mui/material'
 
 // layout imports
-import { Main } from './layouts'
+import { InstitutionLayout, Main } from './layouts'
 
 // pages imports
 import { Dashboard, Login, InstitutionLogin, InstitutionSignup, InstitutionDashboard, ErrorPage, ForgotPassword, ChangePassword } from './pages'
@@ -27,25 +27,17 @@ function App() {
           index: true,
           element: <Dashboard/>
         },
-
         {
           path: '/selectlogin',
           element: <SelectLogin/>,
           errorElement: <ErrorPage/>
         },
-        
-        {
-          path: '/institution/:id/dashboard',
-          element: <InstitutionDashboard/>,
-          errorElement: <ErrorPage/>
-        },
 
         {
-          path: '/institution/:id/change-password',
-          element: <ChangePassword />,
+          path: '/alumni/login',
+          element: <Login/>,
           errorElement: <ErrorPage/>
         },
-
         {
           path: '/institution/password-recovery',
           element: <ForgotPassword />,
@@ -65,10 +57,25 @@ function App() {
         },
 
         {
-          path: '/alumni/login',
-          element: <Login/>,
-          errorElement: <ErrorPage/>
-        }
+          path: '/institution',
+          element: <InstitutionLayout/>,
+          errorElement: <ErrorPage/>,
+          children:[
+            {
+              path: '/institution/:id/dashboard',
+              element: <InstitutionDashboard/>,
+              errorElement: <ErrorPage/>
+            },
+    
+            {
+              path: '/institution/:id/change-password',
+              element: <ChangePassword />,
+              errorElement: <ErrorPage/>
+            },
+    
+          ]
+        },
+
       ]
     }
   ])
