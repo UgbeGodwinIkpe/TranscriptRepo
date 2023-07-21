@@ -9,8 +9,8 @@ import { ChartSection, RecentRequests, TranscriptGrid } from '../../../container
 
 function Dashboard() {
   return (
-    <div className='grid grid-cols-1 md:grid-cols-3'>
-        <div className='md:col-span-2 p-4 flex flex-col gap-y-4'>
+    <div className='grid grid-cols-1 md:grid-cols-3 gap-x-4'>
+        <div className='md:col-span-2 flex flex-col gap-y-4'>
             {/* charts section */}
             <div className="flex flex-col bg-white rounded-md md:h-1/2">
                 <ChartSection/>
@@ -23,7 +23,7 @@ function Dashboard() {
             </div>
         </div>
 
-        <div className='flex my-4 md:mr-4 bg-white rounded-md p-5'>
+        <div className='flex bg-white rounded-md p-5'>
             {/* completed request section */}
             <TranscriptGrid title={`Completed Requests`} />
         </div>

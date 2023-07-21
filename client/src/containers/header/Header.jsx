@@ -10,6 +10,8 @@ import { Link } from 'react-router-dom'
 // assets imports
 import headerImg from '../../assets/headerimg.png'
 
+import './header.css';
+
 function Header() {
   return (
     <div className='flex-1 grid md:grid-cols-2 grid-cols-1 gap-y-[25px] md:gap-y-0'>
@@ -26,7 +28,7 @@ function Header() {
             </Link>
         </div>
 
-        <div className='flex'>
+        <div className='flex slide-fwd-center'>
             <img src={headerImg} alt="headerimg" />
         </div>
     </div>

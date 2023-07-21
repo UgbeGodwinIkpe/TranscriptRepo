@@ -14,7 +14,7 @@ function InstitutionLayout() {
         {
             title: 'Dashboard',
             icon: <HiOutlineRectangleGroup size={20}/>,
-            path: ''
+            path: '/institution/0000/dashboard'
         },
     
         {
@@ -32,7 +32,7 @@ function InstitutionLayout() {
         {
             title: 'Settings',
             icon: <HiOutlineCog6Tooth size={20}/>,
-            path: ''
+            path: '/institution/0000/change-password'
         },
     
     ]
@@ -43,7 +43,7 @@ function InstitutionLayout() {
         <div className='bg-white md:block hidden'>
             <Sidebar menuItems={menuItems}/>
         </div>
-        <div className='md:col-span-4 grid grid-cols-1'>
+        <div className='md:col-span-4 grid grid-cols-1 p-4'>
            <Outlet/>
         </div>
     </div>

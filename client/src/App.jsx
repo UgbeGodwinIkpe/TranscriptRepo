@@ -67,12 +67,6 @@ function App() {
               errorElement: <ErrorPage/>
             },
     
-            {
-              path: '/institution/:id/change-password',
-              element: <ChangePassword />,
-              errorElement: <ErrorPage/>
-            },
-    
           ]
         },
 
@@ -85,7 +79,13 @@ function App() {
               path: '/alumni/:id/dashboard',
               element: <AlumniDashboard/>,
               errorElement: <ErrorPage/>
-            }
+            },
+
+            {
+              path: '/alumni/:id/change-password',
+              element: <ChangePassword />,
+              errorElement: <ErrorPage/>
+            },
           ]  
 
         }

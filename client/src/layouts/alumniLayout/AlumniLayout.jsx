@@ -34,7 +34,7 @@ function AlumniLayout() {
         {
             title: 'Settings',
             icon: <HiOutlineCog6Tooth size={20}/>,
-            path: ''
+            path: '/alumni/0000/change-password'
         },
     
     ]
@@ -46,7 +46,7 @@ function AlumniLayout() {
             <Sidebar menuItems={menuItems}/>
         </div>
 
-        <div className='md:col-span-4 grid grid-cols-1'>
+        <div className='md:col-span-4 grid grid-cols-1 p-4'>
             <Outlet/>
         </div>
     </div>
