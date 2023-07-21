@@ -1,5 +1,9 @@
 // react imports
 import React from 'react'
+import { Link } from 'react-router-dom'
+
+// icons imports
+import { FaFacebookF, FaLinkedin, FaInstagram, FaTwitter } from 'react-icons/fa6'
 
 function Footer() {
   return (
@@ -37,9 +41,24 @@ function Footer() {
 
                 <div className='flex flex-col gap-y-[8px]'>
                     <h4 className='font-semibold'>Social</h4>
-                    <ul className='text-[14px] font-light gap-y-[6px]'>
-                        <li></li>
-                    </ul>
+                    <div className='grid grid-cols-4 gap-x-[6px]'>
+                      <Link>
+                        <FaFacebookF size={20}/>
+                      </Link>
+                        
+                      <Link>
+                        <FaLinkedin size={20}/>
+                      </Link>
+
+                      <Link>
+                        <FaInstagram size={20}/>
+                      </Link>
+
+                      <Link>
+                        <FaTwitter size={20}/>
+                      </Link>  
+                        
+                    </div>
                 </div>
             </div>
             <hr />

@@ -5,6 +5,8 @@ import React from 'react'
 import { Button, Divider, TextField } from '@mui/material'
 import { Link } from 'react-router-dom'
 
+import { FaGoogle } from 'react-icons/fa6'
+
 function LoginForm() {
   return (
     <div className='flex flex-col md:w-4/12 w-full gap-y-4 p-3 md:p-0'>
@@ -46,7 +48,7 @@ function LoginForm() {
 
       <Button 
         variant="contained" 
-        endIcon={''}
+        endIcon={<FaGoogle/>}
         className='bg-[#CCCCCC] text-slate-900 lowercase hover:bg-[#CCCCCC]'
       >
         continue with google

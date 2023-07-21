@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom'
 // material-ui  imports
 import { Button } from '@mui/material';
 
-// materian icon imports
-// import KeyboardArrowDownIcon from '@mui/icons-material/keyboardArrowDown';
+// icons imports
+import { HiChevronDown } from 'react-icons/hi2'
 
 function Navbar() {
 
@@ -25,14 +25,14 @@ function Navbar() {
                 <Link>About</Link>
             </div>
 
-            <div className='flex items-center'>
+            <div className='flex items-center gap-x-2'>
                 <Link>Services</Link>
-                {/* <KeyboardArrowDownIcon width={20} /> */}
+                <HiChevronDown/>
             </div>
 
-            <div className='flex'>
+            <div className='flex items-center gap-x-2'>
                 <Link>Contact</Link>
-                {/* <KeyboardArrowDownIcon width={20} /> */}
+                <HiChevronDown/>
             </div>
         </div>
 
