@@ -13,7 +13,7 @@ const mongoose = require('mongoose'),
 // =================================
 const alumniSchema = new mongoose.Schema({
     fullName:           {type: String},
-    matricNo:           {type: String, required: true},
+    matricNo:           {type: String},
     department:         {type: String},
     yearOfGraduation:   {type: Date},
     monthOfGraduation:  {type: Number},
@@ -36,7 +36,7 @@ const alumniSchema = new mongoose.Schema({
 alumniSchema.statics.signup = async function (fullName, emailAddress, matricNo, password, verfificationCode) {
 
     // check if all inputs are filled
-    if(!fullName || !emailAddress || !password || !matricNo) {
+    if(!fullName || !emailAddress || !password) {
         throw Error('all fields are required')
     }
 
@@ -63,7 +63,7 @@ alumniSchema.statics.signup = async function (fullName, emailAddress, matricNo, 
     const hash = await bcrypt.hash(password, salt)
 
     // creating new alumni in database
-    const alumni = await this.create({fullName, emailAddress, matricNo, password: hash, verfificationCode})
+    const alumni = await this.create({fullName, emailAddress, password: hash, verfificationCode})
 
     // returning the saved user
     return alumni
