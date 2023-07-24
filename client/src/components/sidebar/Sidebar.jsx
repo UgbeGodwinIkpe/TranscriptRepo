@@ -12,7 +12,7 @@ function sidebar({menuItems}) {
    <div className="flex items-center md:block hidden">
         <List>
             {menuItems && menuItems.map((menuItem)=>(
-                <Link to={menuItem.path}>
+                <Link key={menuItem.title} to={menuItem.path}>
                     <ListItem
                         key={menuItem.title}
                     >

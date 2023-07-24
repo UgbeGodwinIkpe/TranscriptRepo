@@ -18,61 +18,66 @@ import { Link } from "react-router-dom";
 
 function Signup() {
 
-const [formData, setFormData] = useState({
-    fullName: '',
-    emailAddress: '',
-    password: '',
-    confirmedPassword: ''
-})
+    const [formData, setFormData] = useState({
+        fullName: '',
+        emailAddress: '',
+        password: '',
+        confirmedPassword: ''
+    })
 
-const navigate = useNavigate()
-const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
 
-const {user, isLoading, isError, isSuccess, message} = useSelector((state) => state.auth)
+    const {user, isLoading, isError, isSuccess, message} = useSelector((state) => state.auth)
 
-useEffect(()=>{
-    if(isError){
-        toast.error(message)
-    }
-
-    if(isSuccess || user) {
-        navigate('/alumni/dashboard')
-    }
-
-    dispatch(reset())
-
-}, [user, isError, isSuccess, message, navigate, dispatch])
-
-const inputChange = (e) => {
-    setFormData((prevState) => ({
-        ...prevState,
-        [e.target.name]: e.target.value
-    }))
-}
-
-const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log(formData)
-
-    const {fullName, emailAddress, password} = formData
-
-    if(formData.password !== formData.confirmedPassword) {
-        toast.error('password do not match')
-    }
-    else{
-        const userData = {
-            fullName,
-            emailAddress,
-            password
+    useEffect(()=>{
+        if(isError){
+            toast.error(message)
         }
 
-        dispatch(register(userData))
-    }
-}
+        if(isSuccess || user) {
+            console.log(user)
+            navigate(`/alumni/${user.alumni._id}/dashboard`)
+        }
 
-if(isLoading){
-    return (<Spinner/>)
-}
+        dispatch(reset())
+
+    }, [user, isError, isSuccess, message, navigate, dispatch])
+
+    const inputChange = (e) => {
+        setFormData((prevState) => ({
+            ...prevState,
+            [e.target.name]: e.target.value
+        }))
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        console.log(formData)
+
+        const {fullName, emailAddress, password} = formData
+
+        if(formData.password !== formData.confirmedPassword) {
+            toast.error('password do not match')
+        }
+        else{
+            const userData = {
+                fullName,
+                emailAddress,
+                password
+            }
+
+            dispatch(register(userData))
+        }
+    }
+
+    if(isLoading){
+        return (<Spinner/>)
+    }
+
+    if(isError) {
+        toast.error(message)
+    }
 
   return (
     <div className='w-full flex flex-col justify-center items-center'>
@@ -83,8 +88,8 @@ if(isLoading){
                     id="outlined-text-input"
                     label="name"
                     type="text"
-                    name="name"
-                    value={formData.name}
+                    name="fullName"
+                    value={formData.fullName}
                     onChange={inputChange}
                 />
 
@@ -92,8 +97,8 @@ if(isLoading){
                     id="outlined-email-input"
                     label="email address"
                     type="email"
-                    name="email"
-                    value={formData.email}
+                    name="emailAddress"
+                    value={formData.emailAddress}
                     onChange={inputChange}
                 />
 
