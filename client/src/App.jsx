@@ -4,13 +4,18 @@ import {
   RouterProvider
 } from 'react-router-dom'
 
+// react-toastify imports
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
+// mui imports
 import { StyledEngineProvider } from '@mui/material'
 
 // layout imports
 import { AlumniLayout, InstitutionLayout, Main } from './layouts'
 
 // pages imports
-import { Login, InstitutionLogin, InstitutionSignup, InstitutionDashboard, ErrorPage, ForgotPassword, ChangePassword, AlumniDashboard, LandingPage } from './pages'
+import { Login, InstitutionLogin, InstitutionSignup, InstitutionDashboard, ErrorPage, ForgotPassword, ChangePassword, AlumniDashboard, LandingPage, AlumniSignup } from './pages'
 
 // components imports
 import { SelectLogin } from './components'
@@ -30,6 +35,12 @@ function App() {
         {
           path: '/selectlogin',
           element: <SelectLogin/>,
+          errorElement: <ErrorPage/>
+        },
+
+        {
+          path: '/alumni/signup',
+          element: <AlumniSignup/>,
           errorElement: <ErrorPage/>
         },
 
@@ -98,6 +109,7 @@ function App() {
     <div>
       <StyledEngineProvider injectFirst>
         <RouterProvider router={router} />
+        <ToastContainer/>
       </StyledEngineProvider>
     </div>
   )
