@@ -19,8 +19,8 @@ import { Link } from "react-router-dom";
 function Signup() {
 
 const [formData, setFormData] = useState({
-    name: '',
-    email: '',
+    fullName: '',
+    emailAddress: '',
     password: '',
     confirmedPassword: ''
 })
@@ -54,15 +54,15 @@ const handleSubmit = (e) => {
     e.preventDefault()
     console.log(formData)
 
-    const {name, email, password} = formData
+    const {fullName, emailAddress, password} = formData
 
     if(formData.password !== formData.confirmedPassword) {
         toast.error('password do not match')
     }
     else{
         const userData = {
-            name,
-            email,
+            fullName,
+            emailAddress,
             password
         }
 

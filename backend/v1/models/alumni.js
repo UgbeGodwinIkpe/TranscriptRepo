@@ -18,6 +18,7 @@ const alumniSchema = new mongoose.Schema({
     yearOfGraduation:   {type: Date},
     monthOfGraduation:  {type: Number},
     emailAddress:       {type: String, required: true},
+    password:           {type:String},
     transcripts:        [],
     paymentDetails:     [],
     verfificationCode:  {type: String},
