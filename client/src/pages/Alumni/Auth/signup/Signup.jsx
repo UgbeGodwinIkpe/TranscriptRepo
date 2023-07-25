@@ -39,7 +39,7 @@ function Signup() {
 
         if(isSuccess || user) {
             console.log(user)
-            navigate(`/alumni/${user.alumni._id}/dashboard`)
+            navigate(`/alumni/${user.alumni._id}/verify`)
         }
 
         dispatch(reset())
