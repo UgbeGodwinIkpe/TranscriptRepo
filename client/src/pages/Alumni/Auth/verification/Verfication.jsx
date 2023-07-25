@@ -24,7 +24,7 @@ function Verfication() {
             toast.error(message)
         }
 
-        if(isSuccess) {
+        if(isSuccess || user.alumni.isVerified) {
             console.log(user)
             navigate(`/alumni/${user.alumni._id}/dashboard`)
         }

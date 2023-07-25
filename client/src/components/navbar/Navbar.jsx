@@ -37,7 +37,7 @@ function Navbar() {
         
         ? (
             <div className="flex items-center justify-between gap-x-4">
-                <span>Welcome <small className='text-purple-500 font-semibold'>{user.alumni.fullName}</small></span>
+                <span>Welcome <small className='text-purple-500 font-semibold'>{``}</small></span>
                 <Button
                     variant='outlined'
                     onClick={onLogout}
