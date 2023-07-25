@@ -11,10 +11,12 @@ import {HiOutlineInformationCircle} from 'react-icons/hi2'
 // features imports
 import { register, reset } from "../../../../features/auth/authSlice";
 
-import Spinner from '../../../../components/Spinner/Spinner'
 
 // rrd imports
 import { Link } from "react-router-dom";
+
+// components imports
+import { Spinner } from "../../../../components";
 
 function Signup() {
 
