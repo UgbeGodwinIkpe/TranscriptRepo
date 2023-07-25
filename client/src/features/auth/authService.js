@@ -6,6 +6,7 @@ const register = async (userData) => {
     const response = await axios.post(API_URL, userData)
 
     if(response.data) {
+        console.log(response.data)
         localStorage.setItem('user', JSON.stringify(response.data))
     }
 
@@ -22,6 +23,16 @@ const login = async (userData) => {
     return response.data
 }
 
+const verify = async (userData) => {
+    const response = await axios.patch(`${API_URL}${userData._id}/verify`, userData)
+
+    if(response.data) {
+        alert('verified')
+    }
+
+    return response.data
+}
+
 const logout = async () => {
     localStorage.removeItem('user')
 }
@@ -29,6 +40,7 @@ const logout = async () => {
 const authService = {
     register,
     login,
+    verify,
     logout
 }
 

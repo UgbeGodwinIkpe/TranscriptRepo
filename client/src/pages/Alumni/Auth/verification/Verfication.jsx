@@ -1,7 +1,13 @@
+// react imports
 import React, {useState, useRef, useEffect} from 'react'
+
+// react-redux imports
+import { useDispatch } from 'react-redux'
+import { verify } from '../../../../features/auth/authSlice';
 
 function Verfication() {
 
+    const dispatch = useDispatch()
     const numFields = 5; // You can adjust this value based on your requirement
     const [values, setValues] = useState(Array(numFields).fill(""));
     const inputRefs = useRef([]);
@@ -22,7 +28,8 @@ function Verfication() {
           inputRefs.current[index + 1].focus();
         }else{
             // verifcation api will be called here
-            console.log(newValues.join(''))
+            const userData = newValues.join('')
+            dispatch(verify(userData))
         }
         
       }
