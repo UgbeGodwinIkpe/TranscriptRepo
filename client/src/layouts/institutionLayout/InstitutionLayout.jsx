@@ -32,7 +32,7 @@ function InstitutionLayout() {
         {
             title: 'Settings',
             icon: <HiOutlineCog6Tooth size={20}/>,
-            path: '/institution/0000/change-password'
+            path: ''
         },
     
     ]

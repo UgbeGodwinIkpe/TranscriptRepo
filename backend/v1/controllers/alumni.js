@@ -75,14 +75,14 @@ exports.getAlumniById = async ( req, res) => {
 exports.createAlumni = async (req, res) => {
 
     // destructuring request body
-    let {fullName, emailAddress, matricNo, password} = req.body
+    let {fullName, emailAddress, password} = req.body
 
    try {
         // generate verification code
         let verificationCode = await crypto.randomBytes(4).toString('hex');
 
         // signup user using static function   
-        const alumni = await Alumni.signup(fullName, emailAddress, matricNo, password, verificationCode)
+        const alumni = await Alumni.signup(fullName, emailAddress, password, verificationCode)
 
         // create a token
         const token = createToken(alumni._id)
