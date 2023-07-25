@@ -37,13 +37,16 @@ function LoginForm() {
         Sign in
       </Button>
 
-      <Button 
-        variant="contained"
-        className='bg-[#CCCCCC] text-slate-900 hover:bg-[#CCCCCC] lowercase'
-      >
-        create account
-      </Button>
-
+      
+        <Button 
+          variant="contained"
+          className='bg-[#CCCCCC] text-slate-900 hover:bg-[#CCCCCC] lowercase'
+        >
+          <Link to={`/alumni/signup`}>
+             create account
+          </Link>
+        </Button>
+      
       <Divider>or continue with</Divider>
 
       <Button 
