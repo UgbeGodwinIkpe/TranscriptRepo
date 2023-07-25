@@ -39,7 +39,7 @@ export const login = createAsyncThunk('auth/login', async (user, thunkAPI) => {
 // verify user
 export const verify = createAsyncThunk('auth/verify', async (user, thunkAPI) => {
     try {
-        // return await authService.login(user)
+        return await authService.verify(user)
     } catch (error) {
         const message = (error.response && error.response.data && error.response.data.message) || error.message || error.error || error.toString()
 
@@ -94,6 +94,23 @@ export const authSlice = createSlice({
             })
 
             .addCase(login.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
+                state.user = null
+            })
+
+            .addCase(verify.pending, (state) => {
+                state.isLoading = true
+            })
+
+            .addCase(verify.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.isLoading = true
+                state.user = action.payload
+            })
+
+            .addCase(verify.rejected, (state, action) => {
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload

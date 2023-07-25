@@ -2,15 +2,36 @@
 import React, {useState, useRef, useEffect} from 'react'
 
 // react-redux imports
-import { useDispatch } from 'react-redux'
-import { verify } from '../../../../features/auth/authSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { toast } from 'react-toastify'
+import { useNavigate } from "react-router-dom";
+import { verify, reset } from '../../../../features/auth/authSlice';
+import { Spinner } from '../../../../components';
 
 function Verfication() {
 
-    const dispatch = useDispatch()
     const numFields = 5; // You can adjust this value based on your requirement
     const [values, setValues] = useState(Array(numFields).fill(""));
     const inputRefs = useRef([]);
+
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+
+    const {user, isLoading, isError, isSuccess, message} = useSelector((state) => state.auth)
+
+    useEffect(()=>{
+        if(isError){
+            toast.error(message)
+        }
+
+        if(isSuccess) {
+            console.log(user)
+            navigate(`/alumni/${user.alumni._id}/dashboard`)
+        }
+
+        dispatch(reset())
+
+    }, [user, isError, isSuccess, message, navigate, dispatch])
   
     useEffect(() => {
       inputRefs.current[0].focus(); // Set focus on the first input field when the component mounts
@@ -28,7 +49,13 @@ function Verfication() {
           inputRefs.current[index + 1].focus();
         }else{
             // verifcation api will be called here
-            const userData = newValues.join('')
+            const enteredCode = newValues.join('')
+
+            const userData = {
+                enteredCode,
+                _id: user.alumni._id
+            }
+
             dispatch(verify(userData))
         }
         
@@ -58,8 +85,6 @@ function Verfication() {
         }
         }
     };
-  
-   
 
   return (
     <div className='flex flex-col md:w-1/2 m-auto flex-1 items-center gap-y-[50px] p-5'>
@@ -79,6 +104,8 @@ function Verfication() {
                 />
             ))}
         </form>
+
+        {isLoading ? <Spinner/> : ``}
 
         <div className='flex flex-col'>
             <p className='text-center'>Please Insert the 5 digit token sent to your email</p>
