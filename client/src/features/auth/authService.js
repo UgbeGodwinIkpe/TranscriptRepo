@@ -23,7 +23,7 @@ const login = async (userData) => {
 }
 
 const verify = async (userData) => {
-    const response = await axios.patch(`${API_URL}${userData._id}/verify`, userData)
+    const response = await axios.patch(`${API_URL}${userData.id}/verify`, userData)
 
     if(response.data) {
         alert('verified')

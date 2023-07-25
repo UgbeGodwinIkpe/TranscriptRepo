@@ -119,8 +119,8 @@ exports.createAlumni = async (req, res) => {
 // verify a recently registered user
 exports.verifyAlumnus = async (req, res) => {
    // get alumnusId and verificationCode from user parameters
-   const {id} = req.params
-   const {verificationCode} = req.body
+   
+   const {verificationCode, id} = req.body
    
     try {
         // verify if id is valid

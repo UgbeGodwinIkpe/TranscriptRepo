@@ -49,11 +49,11 @@ function Verfication() {
           inputRefs.current[index + 1].focus();
         }else{
             // verifcation api will be called here
-            const enteredCode = newValues.join('')
+            const verificationCode = newValues.join('')
 
             const userData = {
-                enteredCode,
-                _id: user.alumni._id
+                verificationCode,
+                id: user.alumni._id
             }
 
             dispatch(verify(userData))
