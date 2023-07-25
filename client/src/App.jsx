@@ -15,7 +15,7 @@ import { StyledEngineProvider } from '@mui/material'
 import { AlumniLayout, InstitutionLayout, Main } from './layouts'
 
 // pages imports
-import { Login, InstitutionLogin, InstitutionSignup, InstitutionDashboard, ErrorPage, ForgotPassword, ChangePassword, AlumniDashboard, LandingPage, AlumniSignup } from './pages'
+import { Login, InstitutionLogin, InstitutionSignup, InstitutionDashboard, ErrorPage, ForgotPassword, ChangePassword, AlumniDashboard, LandingPage, AlumniSignup, AlumniVerification } from './pages'
 
 // components imports
 import { SelectLogin } from './components'
@@ -49,6 +49,13 @@ function App() {
           element: <Login/>,
           errorElement: <ErrorPage/>
         },
+        
+        {
+          path: '/alumni/:id/verify',
+          element: <AlumniVerification/>,
+          errorElement: <ErrorPage/>
+        },
+
         {
           path: '/institution/password-recovery',
           element: <ForgotPassword />,
@@ -86,6 +93,7 @@ function App() {
           element: <AlumniLayout/>,
           errorElement: <ErrorPage/>,
           children: [
+
             {
               path: '/alumni/:id/dashboard',
               element: <AlumniDashboard/>,

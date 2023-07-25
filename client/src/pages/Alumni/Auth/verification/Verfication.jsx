@@ -1,0 +1,85 @@
+import React, {useState, useRef, useEffect} from 'react'
+
+function Verfication() {
+
+    const numFields = 5; // You can adjust this value based on your requirement
+    const [values, setValues] = useState(Array(numFields).fill(""));
+    const inputRefs = useRef([]);
+  
+    useEffect(() => {
+      inputRefs.current[0].focus(); // Set focus on the first input field when the component mounts
+    }, []);
+  
+    // Function to handle input change and auto-focus to the next field
+    const handleInputChange = (index, value) => {
+      if (!isNaN(value) && value !== "") {
+        const newValues = [...values];
+        newValues[index] = value;
+  
+        setValues(newValues);
+  
+        if (index < numFields - 1) {
+          inputRefs.current[index + 1].focus();
+        }else{
+            // verifcation api will be called here
+            console.log(newValues.join(''))
+        }
+        
+      }
+    };
+  
+    // Function to handle pasting values and auto-focus to the next field
+    const handlePaste = (event, index) => {
+      event.preventDefault();
+      const pastedText = event.clipboardData.getData("text/plain");
+      const numbersOnly = pastedText.replace(/[^0-9]/g, "");
+      const newValue = numbersOnly.charAt(0) || "";
+  
+      handleInputChange(index, newValue);
+    };
+  
+    // Function to handle backspace and delete field
+    const handleBackspace = (index, event) => {
+        if (event.key === "Backspace") {
+        const newValues = [...values];
+        newValues[index] = "";
+
+        setValues(newValues);
+
+        if (index > 0) {
+            inputRefs.current[index - 1].focus();
+        }
+        }
+    };
+  
+   
+
+  return (
+    <div className='flex flex-col md:w-1/2 m-auto flex-1 items-center gap-y-[50px] p-5'>
+        <h4 className='font-bold'>Enter Verification token</h4>
+        <form className='grid grid-cols-5 md:gap-x-5 gap-x-2'>
+            {Array.from({ length: numFields }, (_, index) => (
+                <input
+                    key={index}
+                    type="text"
+                    maxLength="1"
+                    className='border-slate-300 text-center py-2'
+                    ref={(el) => (inputRefs.current[index] = el)}
+                    value={values[index]}
+                    onChange={(e) => handleInputChange(index, e.target.value)}
+                    onPaste={(e) => handlePaste(e, index)}
+                    onKeyDown={(e) => handleBackspace(index, e)}
+                />
+            ))}
+        </form>
+
+        <div className='flex flex-col'>
+            <p className='text-center'>Please Insert the 5 digit token sent to your email</p>
+            <p className='text-[#6B3FA0] text-center'>Manoahluka@gmail.com</p>
+        </div>
+
+    </div>
+  )
+}
+
+export default Verfication
