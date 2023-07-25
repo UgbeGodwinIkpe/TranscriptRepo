@@ -18,6 +18,22 @@ const createToken = (_id) => {
     jwt.sign({_id}, process.env.SECRET_KEY, {expiresIn: '1d'})
 }
 
+// ===========================================
+// ==== function that generates random nums ==
+// ===========================================
+
+const generateRandomNumber = () => {
+    const length = 5;
+  
+    // Generate random number with a specified length
+    const randomNumber = Math.floor(Math.random() * 10 ** length);
+  
+    // Pad the number with leading zeros to ensure it has exactly five digits
+    const formattedNumber = randomNumber.toString().padStart(length, "0");
+  
+    return formattedNumber;
+}
+
 // =====================================
 // ===== Alumni controller functions ===
 // =====================================
@@ -79,7 +95,7 @@ exports.createAlumni = async (req, res) => {
 
    try {
         // generate verification code
-        let verificationCode = await crypto.randomBytes(4).toString('hex');
+        let verificationCode = await generateRandomNumber()
 
         // signup user using static function   
         const alumni = await Alumni.signup(fullName, emailAddress, password, verificationCode)
@@ -88,7 +104,7 @@ exports.createAlumni = async (req, res) => {
         const token = createToken(alumni._id)
 
         // send welcome email
-        await Alumni.sendEmail(emailAddress, 'Welcome to Transcript-Digita', htmlContent)
+        await Alumni.sendEmail(emailAddress, 'Welcome to Transcript-Digita', `verfication code: ${verificationCode}`)
 
         // return status code and data as json
         return res.status(200).json({alumni, token}) 
@@ -103,16 +119,17 @@ exports.createAlumni = async (req, res) => {
 // verify a recently registered user
 exports.verifyAlumnus = async (req, res) => {
    // get alumnusId and verificationCode from user parameters
-   const {alumniId, verificationCode} = req.params
+   const {id} = req.params
+   const {verificationCode} = req.body
    
     try {
         // verify if id is valid
-        if(!mongoose.Types.ObjectId.isValid(alumniId)){
+        if(!mongoose.Types.ObjectId.isValid(id)){
             throw Error('not a valid id')   
         }
 
         // find alumnus in database
-        const foundAlumni = await Alumni.findById(alumniId)
+        const foundAlumni = await Alumni.findById(id)
 
         // if user not found in database throw error
         if(!foundAlumni){
@@ -126,7 +143,7 @@ exports.verifyAlumnus = async (req, res) => {
 
         // compare params code with found users verification code
         if(verificationCode === foundAlumni.verfificationCode){
-            let verifiedAlumni = await Alumni.findByIdAndUpdate(alumniId, {isVerified: true})
+            let verifiedAlumni = await Alumni.findByIdAndUpdate(id, {isVerified: true})
             return res.status(200).json({message: 'successfully updated', data: verifiedAlumni})
         }
 

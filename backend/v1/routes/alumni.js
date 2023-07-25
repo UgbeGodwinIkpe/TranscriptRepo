@@ -29,7 +29,7 @@ router.route('/:id')
     .patch()
     .delete(controller.deleteAlumni)
 
-router.route('/:alumniId/:verificationCode')
+router.route('/:id/verify')
     .patch(controller.verifyAlumnus)
 
 module.exports = router

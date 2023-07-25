@@ -34,7 +34,7 @@ const alumniSchema = new mongoose.Schema({
 // ==================================
 
 // signup user function
-alumniSchema.statics.signup = async function (fullName, emailAddress, matricNo, password, verfificationCode) {
+alumniSchema.statics.signup = async function (fullName, emailAddress,  password, verfificationCode) {
 
     // check if all inputs are filled
     if(!fullName || !emailAddress || !password) {
