@@ -1,7 +1,8 @@
 // rrd imports
 import {
   createBrowserRouter,
-  RouterProvider
+  RouterProvider,
+  Navigate
 } from 'react-router-dom'
 
 // react-toastify imports
@@ -20,7 +21,12 @@ import { Login, InstitutionLogin, InstitutionSignup, InstitutionDashboard, Error
 // components imports
 import { SelectLogin } from './components'
 
+// redux imports
+import { useSelector } from 'react-redux';
+
 function App() {
+
+  const { user } = useSelector((state) => state.auth)
 
   const router = createBrowserRouter([
     {
@@ -52,7 +58,7 @@ function App() {
         
         {
           path: '/alumni/:id/verify',
-          element: <AlumniVerification/>,
+          element: user ? <AlumniVerification/> : <Navigate to={`/alumni/login`} />,
           errorElement: <ErrorPage/>
         },
 
@@ -90,19 +96,19 @@ function App() {
 
         {
           path: '/alumni',
-          element: <AlumniLayout/>,
+          element: user ? <AlumniLayout/> : <Navigate to={`/alumni/login`} /> ,
           errorElement: <ErrorPage/>,
           children: [
 
             {
               path: '/alumni/:id/dashboard',
-              element: <AlumniDashboard/>,
+              element: user ? <AlumniDashboard/> : <Navigate to={`/alumni/login`} />,
               errorElement: <ErrorPage/>
             },
 
             {
               path: '/alumni/:id/change-password',
-              element: <ChangePassword />,
+              element: user ? <ChangePassword /> : <Navigate to={`/alumni/login`} />,
               errorElement: <ErrorPage/>
             },
           ]  

@@ -95,7 +95,7 @@ function Verfication() {
                     key={index}
                     type="text"
                     maxLength="1"
-                    className='border-slate-300 text-center py-2'
+                    className='border border-slate-300 text-center py-2'
                     ref={(el) => (inputRefs.current[index] = el)}
                     value={values[index]}
                     onChange={(e) => handleInputChange(index, e.target.value)}
@@ -109,7 +109,7 @@ function Verfication() {
 
         <div className='flex flex-col'>
             <p className='text-center'>Please Insert the 5 digit token sent to your email</p>
-            <p className='text-[#6B3FA0] text-center'>{user.alumni.email}</p>
+            <p className='text-[#6B3FA0] text-center'>{user.alumni.emailAddress}</p>
         </div>
 
     </div>
