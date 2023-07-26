@@ -5,7 +5,8 @@ require('dotenv').config()
 const Alumni = require('../models/alumni'),
     mongoose = require('mongoose'),
     jwt = require('jsonwebtoken'),
-    crypto = require('crypto'),
+    validator = require('validator'),
+    bcrypt = require('bcryptjs'),
     fs = require('fs')
 
 const htmlContent = fs.readFileSync('./views/welcomeEmail.html', 'utf-8')
@@ -139,7 +140,7 @@ exports.forgotPassword = async (req, res) => {
         await foundAlumni.save();
 
         // send password reset email
-        await Alumni.sendEmail(emailAddress, 'Reset password', `Password reset link: https://transcript360.onrender.com/reset-password/${resetToken}`)
+        await Alumni.sendEmail(emailAddress, 'Reset password', `Password reset link: https://transcript360.onrender.com/alumni/reset-password/${resetToken}`)
 
         return res.status(200).json({message: `verification email successfully sent`})
 
@@ -167,8 +168,18 @@ exports.passwordReset = async (req, res) => {
             throw Error("Password reset token is invalid or has expired");
         }
 
+        // check password strength
+        // using validator to check if password is strong
+        if(!validator.isStrongPassword(password)){
+            throw Error ('password not strong enough')
+        }
+        // hash password
+        // generating salt to hash password
+        const salt = await bcrypt.genSalt(10)
+        const hash = await bcrypt.hash(password, salt)
+
         // Update the foundAlumni's password
-        foundAlumni.password = password;
+        foundAlumni.password = hash;
         foundAlumni.resetPasswordToken = '';
         foundAlumni.resetPasswordExpires = '';
 
