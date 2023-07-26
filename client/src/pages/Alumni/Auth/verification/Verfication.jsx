@@ -109,7 +109,7 @@ function Verfication() {
 
         <div className='flex flex-col'>
             <p className='text-center'>Please Insert the 5 digit token sent to your email</p>
-            <p className='text-[#6B3FA0] text-center'>Manoahluka@gmail.com</p>
+            <p className='text-[#6B3FA0] text-center'>{user.alumni.email}</p>
         </div>
 
     </div>

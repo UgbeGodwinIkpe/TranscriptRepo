@@ -143,7 +143,7 @@ exports.verifyAlumnus = async (req, res) => {
 
         // compare params code with found users verification code
         if(verificationCode === foundAlumni.verfificationCode){
-            let verifiedAlumni = await Alumni.findByIdAndUpdate(id, {isVerified: true})
+            let verifiedAlumni = await Alumni.findByIdAndUpdate(id, {isVerified: true}, {new: true, useFindAndModify: false})
             return res.status(200).json({message: 'successfully updated', alumni: verifiedAlumni})
         }
 
