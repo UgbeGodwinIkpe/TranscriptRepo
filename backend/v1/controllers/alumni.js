@@ -115,6 +115,72 @@ exports.createAlumni = async (req, res) => {
    }
 }
 
+// forgot password
+exports.forgotPassword = async (req, res) => {
+    try {
+        
+        // get all info from parameters
+        const { emailAddress } = req.body;
+        const foundAlumni = await Alumni.findOne({ emailAddress });
+        
+        // check if email exists in database
+        if (!foundAlumni) {
+            throw Error('Email does not exist in our database')
+        }
+
+        // Generate a reset token
+        const resetToken = await generateRandomNumber()
+
+        // Set the reset token and expiration time in the foundAlumni document
+        foundAlumni.resetPasswordToken = resetToken;
+        foundAlumni.resetPasswordExpires = Date.now() + 3600000; // Token expires in 1 hour
+
+        // save resetToken and expiry date in database
+        await foundAlumni.save();
+
+        // send password reset email
+        await Alumni.sendEmail(emailAddress, 'Reset password', `Password reset link: https://transcript360.onrender.com/reset-password/${resetToken}`)
+
+        return res.status(200).json({message: `verification email successfully sent`})
+
+    } catch (error) {
+         // return error code and message 
+         return res.status(400).json({error: error.message})
+    }
+}
+
+
+// password reset
+exports.passwordReset = async (req, res) => {
+    try {
+        const { token } = req.params;
+        const { password } = req.body;
+
+        // find alumni using token and expiry time
+        const foundAlumni = await Alumni.findOne({
+            resetPasswordToken: token,
+            resetPasswordExpires: { $gt: Date.now() }
+        });
+
+        // if alumni not found throw error
+        if (!foundAlumni) {
+            throw Error("Password reset token is invalid or has expired");
+        }
+
+        // Update the foundAlumni's password
+        foundAlumni.password = password;
+        foundAlumni.resetPasswordToken = '';
+        foundAlumni.resetPasswordExpires = '';
+
+        await foundAlumni.save();
+
+        return res.status(200).json({ message: "Password reset successful", alumni: foundAlumni });
+        
+    } catch (error) {
+         // return error code and message 
+         return res.status(400).json({error: error.message})
+    }
+}
 
 // verify a recently registered user
 exports.verifyAlumnus = async (req, res) => {

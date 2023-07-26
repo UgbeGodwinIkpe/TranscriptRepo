@@ -17,6 +17,12 @@ router.route('/')
 
 router.route('/login')
     .post(controller.loginAlumnus)
+
+router.route('/reset-password')
+    .post(controller.forgotPassword)
+
+router.route('/reset-password/:token')
+    .post(controller.passwordReset)
     
     
 // ==================================

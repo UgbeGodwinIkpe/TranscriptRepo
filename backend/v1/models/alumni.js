@@ -25,7 +25,9 @@ const alumniSchema = new mongoose.Schema({
     isActive:           {type: Boolean, default: true},
     isVerified:         {type: Boolean, default: false},
     isDisabled:         {type: Boolean, default: false},
-    isRestricted:       {type: Boolean, default: false}
+    isRestricted:       {type: Boolean, default: false},
+    resetPasswordToken: {type: Number },
+    resetPasswordExpires: {type: String}
 
 }, {timestamps: true})
 
