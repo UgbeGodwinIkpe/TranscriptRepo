@@ -64,17 +64,10 @@ function Login() {
     dispatch(login(userData))  
   }
 
-  if(isLoading){
-    return (<Spinner/>)
-  }
-
-  if(isError) {
-      toast.error(message)
-  }
-
   return (
     <div className='w-full flex flex-col justify-center items-center'>
         <form onSubmit={handleSubmit} className='flex flex-col md:w-4/12 w-full gap-y-4 p-3 md:p-0'>
+          {isLoading ? <Spinner/> : ``}
           <div className='flex flex-col gap-y-4'>
             <TextField
               id="outlined-email-input"

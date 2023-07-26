@@ -4,6 +4,9 @@ import React from 'react'
 // rrd imports
 import { Outlet } from 'react-router-dom'
 
+// redux imports
+import { useSelector } from 'react-redux';
+
 // components import
 import { Sidebar } from '../../components'
 
@@ -12,11 +15,13 @@ import {HiOutlineRectangleGroup, HiListBullet, HiOutlineBell, HiOutlineCog6Tooth
 
 function AlumniLayout() {
 
+    const { user } = useSelector((state) => state.auth)
+
     const menuItems = [
         {
             title: 'Dashboard',
             icon: <HiOutlineRectangleGroup size={20}/>,
-            path: ''
+            path: `/alumni/${user.alumni._id}/dashboard`
         },
     
         {
@@ -34,7 +39,7 @@ function AlumniLayout() {
         {
             title: 'Settings',
             icon: <HiOutlineCog6Tooth size={20}/>,
-            path: '/alumni/0000/change-password'
+            path: `/alumni/${user.alumni._id}/change-password`
         },
     
     ]
