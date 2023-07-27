@@ -76,6 +76,7 @@ function Login() {
               name='emailAddress'
               value={formData.emailAddress}
               onChange={inputChange}
+              required
             />
 
             <TextField
@@ -86,6 +87,7 @@ function Login() {
               name='password'
               value={formData.password}
               onChange={inputChange}
+              required
             />
           </div>
 

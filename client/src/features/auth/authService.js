@@ -2,6 +2,7 @@ import axios from 'axios'
 
 const API_URL = 'https://transcriptdigita-api.onrender.com/api/v1/alumnus/'
 
+// register service
 const register = async (userData) => {
     const response = await axios.post(API_URL, userData)
 
@@ -12,6 +13,7 @@ const register = async (userData) => {
     return response.data
 }
 
+// login service
 const login = async (userData) => {
     const response = await axios.post(`${API_URL}login`, userData)
 
@@ -22,6 +24,7 @@ const login = async (userData) => {
     return response.data
 }
 
+// account verfification service
 const verify = async (userData) => {
     const response = await axios.patch(`${API_URL}${userData.id}/verify`, userData)
 
@@ -32,6 +35,7 @@ const verify = async (userData) => {
     return response.data
 }
 
+// reset password service
 const resetPassword = async (userData) => {
     const response = await axios.post(`${API_URL}/reset-password`, userData)
 
@@ -42,6 +46,7 @@ const resetPassword = async (userData) => {
     return response.data
 }
 
+// logout service
 const logout = async () => {
     localStorage.removeItem('user')
 }

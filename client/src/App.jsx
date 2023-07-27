@@ -16,7 +16,7 @@ import { StyledEngineProvider } from '@mui/material'
 import { AlumniLayout, InstitutionLayout, Main } from './layouts'
 
 // pages imports
-import { Login, InstitutionLogin, InstitutionSignup, InstitutionDashboard, ErrorPage, ForgotPassword, ChangePassword, AlumniDashboard, LandingPage, AlumniSignup, AlumniVerification } from './pages'
+import { Login, InstitutionLogin, InstitutionSignup, InstitutionDashboard, ErrorPage, ForgotPassword, ChangePassword, AlumniDashboard, LandingPage, AlumniSignup, AlumniVerification, AlumniResetPassword } from './pages'
 
 // components imports
 import { SelectLogin } from './components'
@@ -65,6 +65,12 @@ function App() {
         {
           path: '/alumni/reset-password',
           element: <ForgotPassword />,
+          errorElement: <ErrorPage/>
+        },
+
+        {
+          path: '/alumni/reset-password/:token',
+          element: <AlumniResetPassword/>,
           errorElement: <ErrorPage/>
         },
 

@@ -86,6 +86,7 @@ function Signup() {
                     name="fullName"
                     value={formData.fullName}
                     onChange={inputChange}
+                    required
                 />
 
                 <TextField
@@ -95,6 +96,7 @@ function Signup() {
                     name="emailAddress"
                     value={formData.emailAddress}
                     onChange={inputChange}
+                    required
                 />
 
                 <TextField
@@ -105,6 +107,7 @@ function Signup() {
                     name="password"
                     value={formData.password}
                     onChange={inputChange}
+                    required
                 />
 
                 <TextField
@@ -114,6 +117,7 @@ function Signup() {
                     name="confirmedPassword"
                     value={formData.confirmedPassword}
                     onChange={inputChange}
+                    required
                 />
 
             </div>
