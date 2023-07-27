@@ -63,7 +63,7 @@ function App() {
         },
 
         {
-          path: '/institution/password-recovery',
+          path: '/alumni/reset-password',
           element: <ForgotPassword />,
           errorElement: <ErrorPage/>
         },

@@ -90,7 +90,7 @@ function Login() {
           </div>
 
           <div className='text-right text-xs font-light'>
-            <Link>forgot password ?</Link>
+            <Link to={`/alumni/reset-password`}>forgot password ?</Link>
           </div>
 
           <Button 

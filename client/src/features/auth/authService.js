@@ -32,6 +32,16 @@ const verify = async (userData) => {
     return response.data
 }
 
+const resetPassword = async (userData) => {
+    const response = await axios.post(`${API_URL}/reset-password`, userData)
+
+    if(response.data) {
+        console.log('reset link sent to email')
+    }
+
+    return response.data
+}
+
 const logout = async () => {
     localStorage.removeItem('user')
 }
@@ -40,6 +50,7 @@ const authService = {
     register,
     login,
     verify,
+    resetPassword,
     logout
 }
 
