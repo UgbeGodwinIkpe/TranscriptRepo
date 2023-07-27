@@ -41,7 +41,7 @@ export const resetPassword = createAsyncThunk('auth/resetPassword', async (user,
     try {
         return await authService.resetPassword(user)
     } catch (error) {
-        const message = (error.response && error.response.data && error.response.data.message) || error.message || error.error || error.toString()
+        const message = error.response.data.error || (error.response.data.message && error.response && error.response.data ) 
 
         return thunkAPI.rejectWithValue(message)
     }
@@ -53,7 +53,7 @@ export const verify = createAsyncThunk('auth/verify', async (user, thunkAPI) => 
         return await authService.verify(user)
     } catch (error) {
         const message = (error.response && error.response.data && error.response.data.message) || error.message || error.error || error.toString()
-
+    
         return thunkAPI.rejectWithValue(message)
     }
 })

@@ -56,6 +56,7 @@ function Forgotpassword() {
                 type="email"
                 value={emailAddress}
                 onChange={(e)=>{ setEmailAddress(e.target.value) }}
+                required
             />
             <Button
                 variant='contained'
