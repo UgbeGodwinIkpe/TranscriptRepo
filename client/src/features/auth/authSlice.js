@@ -19,7 +19,7 @@ export const register = createAsyncThunk('auth/register', async (user, thunkAPI)
     try {
         return await authService.register(user)
     } catch (error) {
-        const message = (error.response && error.response.data && error.response.data.message) || error.message || error.error || error.toString()
+        const message = error.response.data.error || (error.response && error.response.data && error.response.data.message) || error.message || error.error || error.toString()
 
         return thunkAPI.rejectWithValue(message)
     }
@@ -30,7 +30,7 @@ export const login = createAsyncThunk('auth/login', async (user, thunkAPI) => {
     try {
         return await authService.login(user)
     } catch (error) {
-        const message = (error.response && error.response.data && error.response.data.message) || error.message || error.error || error.toString()
+        const message =  error.response.data.error || (error.response.data.message && error.response && error.response.data ) || error.message || error.error || error.toString()
 
         return thunkAPI.rejectWithValue(message)
     }
@@ -41,8 +41,9 @@ export const resetPassword = createAsyncThunk('auth/resetPassword', async (user,
     try {
         return await authService.resetPassword(user)
     } catch (error) {
-        const message = error.response.data.error || (error.response.data.message && error.response && error.response.data ) 
+        const message = error.response.data.error || (error.response && error.response.data ) 
 
+        console.log(error)
         return thunkAPI.rejectWithValue(message)
     }
 })
@@ -52,7 +53,7 @@ export const verify = createAsyncThunk('auth/verify', async (user, thunkAPI) => 
     try {
         return await authService.verify(user)
     } catch (error) {
-        const message = (error.response && error.response.data && error.response.data.message) || error.message || error.error || error.toString()
+        const message = error.response.data.error || (error.response && error.response.data && error.response.data.message) || error.message || error.error || error.toString()
     
         return thunkAPI.rejectWithValue(message)
     }
