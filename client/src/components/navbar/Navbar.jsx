@@ -13,9 +13,9 @@ import { Button } from '@mui/material';
 // icons imports
 import { HiChevronDown } from 'react-icons/hi2'
 
-function Navbar({user}) {
+function Navbar() {
 
-    // const {user} = useSelector((state) => state.auth)
+    const {user} = useSelector((state) => state.auth)
 
     const navigate = useNavigate()
 

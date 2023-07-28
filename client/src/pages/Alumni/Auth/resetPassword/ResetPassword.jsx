@@ -1,7 +1,23 @@
+// mui imports
 import { Button, TextField } from '@mui/material'
-import React from 'react'
+
+// react imports
+import React, { useState } from 'react'
 
 function ResetPassword() {
+
+    const [formData, setFormData] = useState({
+        password: '',
+        confirmedPassword: ''
+    })
+
+    const inputChange = (e) => {
+        setFormData((prevState) => ({
+            ...prevState,
+            [e.target.name]: e.target.value
+        }))
+    }
+
   return (
     <div className='grid grid-cols-1 flex-1 justify-items-center items-center justify-center'>       
         <form className="flex flex-col md:w-4/12 w-full gap-y-[25px] my-[25px]">
@@ -10,12 +26,20 @@ function ResetPassword() {
                 id="outlined-email-input"
                 label="new password"
                 type="password"
+                name='password'
+                required
+                value={formData.password}
+                onChange={inputChange}
             />
 
             <TextField
                 id="outlined-email-input"
                 label="confirm password"
                 type="password"
+                name='confirmedPassword'
+                required
+                value={formData.confirmedPassword}
+                onChange={inputChange}
             />
             <Button
                 variant='contained'

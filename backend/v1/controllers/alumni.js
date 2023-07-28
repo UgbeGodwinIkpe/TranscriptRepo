@@ -56,7 +56,7 @@ exports.getAllAlumnus = async (req, res) => {
 
     } catch (error) {
         // return status and error as json
-        return res.status(403).json({error: error.message})
+        return res.status(403).json({message: error.message})
     }
 }
 
@@ -83,7 +83,7 @@ exports.getAlumniById = async ( req, res) => {
 
     } catch (error) {
         // return status and error as json
-        return res.status(403).json({error: error.message})
+        return res.status(403).json({message: error.message})
     }
 }
 
@@ -112,7 +112,7 @@ exports.createAlumni = async (req, res) => {
 
    } catch (error) {
         // return error code and message 
-        return res.status(400).json({error: error.message})
+        return res.status(400).json({message: error.message})
    }
 }
 
@@ -146,7 +146,7 @@ exports.forgotPassword = async (req, res) => {
 
     } catch (error) {
          // return error code and message 
-         return res.status(400).json({error: error.message})
+         return res.status(400).json({message: error.message})
     }
 }
 
@@ -189,7 +189,7 @@ exports.passwordReset = async (req, res) => {
         
     } catch (error) {
          // return error code and message 
-         return res.status(400).json({error: error.message})
+         return res.status(400).json({message: error.message})
     }
 }
 
@@ -226,7 +226,7 @@ exports.verifyAlumnus = async (req, res) => {
 
     } catch (error) {
         // return error code and message 
-        return res.status(400).json({error: error.message})
+        return res.status(400).json({message: error.message})
     }
 }
 
@@ -248,7 +248,7 @@ exports.loginAlumnus = async (req, res) => {
 
     } catch (error) {
         // return error code and message 
-        return res.status(400).json({error: error.message})
+        return res.status(400).json({message: error.message})
     }
 } 
 
@@ -274,7 +274,7 @@ exports.updateAlumni = async (req, res) => {
         
     } catch (error) {
         // return error code and message 
-        return res.status(400).json({error: error.message})
+        return res.status(400).json({message: error.message})
     }
 }
 
@@ -299,7 +299,7 @@ exports.deleteAlumni = async (req, res) => {
 
     } catch (error) {
         // return error code and message 
-        return res.status(400).json({error: error.message})
+        return res.status(400).json({message: error.message})
     }
 }
 

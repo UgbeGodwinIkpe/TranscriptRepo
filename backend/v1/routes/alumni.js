@@ -9,6 +9,8 @@ const express = require('express'),
 // =================================
 // ==== retrieve all Alumnus =======
 // ==== create new Alumni ==========
+// ==== send reset pwd link ========
+// ==== reset password =============
 // ================================= 
 router.route('/')
     .get(isAuth, controller.getAllAlumnus)
