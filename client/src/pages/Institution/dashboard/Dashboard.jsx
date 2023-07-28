@@ -5,7 +5,7 @@ import React from 'react'
 import { Sidebar } from '../../../components'
 
 // containers imports
-import { ChartSection, RecentRequests, TranscriptGrid } from '../../../containers'
+import { ChartSection, RecentRequests, TranscriptData, TranscriptGrid } from '../../../containers'
 
 function Dashboard() {
   return (
@@ -23,9 +23,15 @@ function Dashboard() {
             </div>
         </div>
 
-        <div className='flex bg-white rounded-md p-5'>
+        <div className='flex flex-col gap-y-4'>
+            <div className='grid grid-cols-1 p-5 rounded-md bg-white'>
+                <TranscriptData title={`Transcript Data`} />
+            </div>
+
             {/* completed request section */}
-            <TranscriptGrid title={`Completed Requests`} />
+            <div className='grid grid-cols-1 p-5 rounded-md bg-white h-1/2'>
+                <TranscriptGrid title={`Completed Requests`} />
+            </div>
         </div>
     </div>  
   )
