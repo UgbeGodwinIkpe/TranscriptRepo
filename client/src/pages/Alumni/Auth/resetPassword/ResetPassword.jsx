@@ -18,9 +18,24 @@ function ResetPassword() {
         }))
     }
 
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        
+        const {password, confirmedPassword} = formData
+        
+        if(password !== confirmedPassword) {
+            alert('password does not match')
+        }
+
+        if(password == confirmedPassword){
+            console.log(password, confirmedPassword)
+        }
+        
+    }
+
   return (
     <div className='grid grid-cols-1 flex-1 justify-items-center items-center justify-center'>       
-        <form className="flex flex-col md:w-4/12 w-full gap-y-[25px] my-[25px]">
+        <form onSubmit={handleSubmit} className="flex flex-col md:w-4/12 w-full gap-y-[25px] my-[25px]">
             <h4 className='text-center font-bold'>Password reset</h4>
             <TextField
                 id="outlined-email-input"
@@ -33,7 +48,7 @@ function ResetPassword() {
             />
 
             <TextField
-                id="outlined-email-input"
+                id="outlined-email-input2"
                 label="confirm password"
                 type="password"
                 name='confirmedPassword'

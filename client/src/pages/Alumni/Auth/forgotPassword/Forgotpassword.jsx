@@ -28,8 +28,8 @@ function Forgotpassword() {
             toast.error(message)
         }
     
-        if(isSuccess || user) {
-            toast.success(user.message)
+        if(isSuccess) {
+            toast.success(message)
         }
     
         dispatch(reset())
@@ -68,7 +68,6 @@ function Forgotpassword() {
 
             {isLoading ? <Spinner/> : ``}
         </form>
-       
     </div>
   )
 }

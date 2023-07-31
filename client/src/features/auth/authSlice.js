@@ -19,7 +19,7 @@ export const register = createAsyncThunk('auth/register', async (user, thunkAPI)
     try {
         return await authService.register(user)
     } catch (error) {
-        const message = error.response.data.error || (error.response && error.response.data && error.response.data.message) || error.message || error.error || error.toString()
+        const message = error.response.data.message || (error.response && error.response.data && error.response.data.message) || error.message || error.error || error.toString()
 
         return thunkAPI.rejectWithValue(message)
     }
@@ -30,20 +30,20 @@ export const login = createAsyncThunk('auth/login', async (user, thunkAPI) => {
     try {
         return await authService.login(user)
     } catch (error) {
-        const message =  error.response.data.error || (error.response.data.message && error.response && error.response.data ) || error.message || error.error || error.toString()
+        const message =  error.response.data.message || (error.response.data.message && error.response && error.response.data ) || error.message || error.error || error.toString()
 
         return thunkAPI.rejectWithValue(message)
     }
 })
 
 // reset user password
-export const resetPassword = createAsyncThunk('auth/resetPassword', async (user, thunkAPI) => {
+export const resetPassword = createAsyncThunk('auth/resetPassword', async (emailAddress, thunkAPI) => {
     try {
-        return await authService.resetPassword(user)
+        console.log(emailAddress)
+         await authService.resetPassword(emailAddress)
     } catch (error) {
-        const message = error.response.data.error || (error.response && error.response.data ) 
+        const message = error.response.data.message || (error.response && error.response.data ) 
 
-        console.log(error)
         return thunkAPI.rejectWithValue(message)
     }
 })
@@ -53,7 +53,7 @@ export const verify = createAsyncThunk('auth/verify', async (user, thunkAPI) => 
     try {
         return await authService.verify(user)
     } catch (error) {
-        const message = error.response.data.error || (error.response && error.response.data && error.response.data.message) || error.message || error.error || error.toString()
+        const message = error.response.data.message || (error.response && error.response.data && error.response.data.message) || error.message || error.error || error.toString()
     
         return thunkAPI.rejectWithValue(message)
     }
@@ -84,7 +84,7 @@ export const authSlice = createSlice({
 
             .addCase(register.fulfilled, (state, action) => {
                 state.isLoading = false
-                state.isLoading = true
+                state.isSuccess = true
                 state.user = action.payload
             })
 
@@ -101,7 +101,7 @@ export const authSlice = createSlice({
 
             .addCase(login.fulfilled, (state, action) => {
                 state.isLoading = false
-                state.isLoading = true
+                state.isSuccess = true
                 state.user = action.payload
             })
 
@@ -118,7 +118,7 @@ export const authSlice = createSlice({
 
             .addCase(verify.fulfilled, (state, action) => {
                 state.isLoading = false
-                state.isLoading = true
+                state.isSuccess = true
                 state.user = action.payload
             })
 
@@ -135,8 +135,8 @@ export const authSlice = createSlice({
 
             .addCase(resetPassword.fulfilled, (state, action) => {
                 state.isLoading = false
-                state.isLoading = true
-                state.user = action.payload
+                state.isSuccess = true
+                state.message = 'email successfully sent'
             })
 
             .addCase(resetPassword.rejected, (state, action) => {
