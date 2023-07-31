@@ -1,10 +1,29 @@
+import axios from 'axios'
 // mui imports
 import { Button, TextField } from '@mui/material'
 
 // react imports
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { toast } from 'react-toastify'
+
+// components imports
+import { Spinner } from '../../../../components'
+
+// react-redux imports
+import { useSelector, useDispatch } from 'react-redux'
+
+// features imports
+import { changePassword, reset } from "../../../../features/auth/authSlice";
+
+// rrd imports
+import { Link, useNavigate } from "react-router-dom";
 
 function ResetPassword() {
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    
+    const {user, isLoading, isError, isSuccess, message} = useSelector((state) => state.auth)
 
     const [formData, setFormData] = useState({
         password: '',
@@ -18,17 +37,37 @@ function ResetPassword() {
         }))
     }
 
+    useEffect(()=>{
+        if(isError){
+            toast.error(message)
+        }
+    
+        if(isSuccess || user) {
+            navigate(`/alumni/${user.alumni._id}/dashboard`)
+        }
+    
+        dispatch(reset())
+    
+    }, [user, isError, isSuccess, message, navigate, dispatch])
+
     const handleSubmit = (e) => {
         e.preventDefault()
         
         const {password, confirmedPassword} = formData
         
+        const userData = {
+            password,
+            token: axios.params
+        }
+
         if(password !== confirmedPassword) {
             alert('password does not match')
         }
 
         if(password == confirmedPassword){
             console.log(password, confirmedPassword)
+
+            dispatch(changePassword(userData))
         }
         
     }

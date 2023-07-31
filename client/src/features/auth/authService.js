@@ -37,10 +37,21 @@ const verify = async (userData) => {
 
 // reset password service
 const resetPassword = async (userData) => {
-    const response = await axios.post(`${API_URL}/reset-password`, userData)
+    const response = await axios.post(`${API_URL}reset-password`, userData)
 
     if(response.data) {
         console.log('reset link sent to email')
+    }
+
+    return response.data
+}
+
+// change user password service
+const changePassword = async (userData) => {
+    const response = await axios.post(`${API_URL}reset-password/${userData.token}`)
+
+    if(response.data) {
+        console.log(response.data)
     }
 
     return response.data
@@ -56,6 +67,7 @@ const authService = {
     login,
     verify,
     resetPassword,
+    changePassword,
     logout
 }
 

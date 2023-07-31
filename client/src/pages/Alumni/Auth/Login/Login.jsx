@@ -1,9 +1,6 @@
 // react imports
 import React, { useState, useEffect } from 'react'
 
-// components imports
-import { Spinner } from '../../../../components'
-
 import { toast } from 'react-toastify'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link, useNavigate } from "react-router-dom";
@@ -16,6 +13,8 @@ import { Button, Divider, TextField } from '@mui/material';
 
 import {FaGoogle} from 'react-icons/fa6'
 
+// components imports
+import { Spinner } from '../../../../components'
 
 function Login() {
 
@@ -67,7 +66,6 @@ function Login() {
   return (
     <div className='w-full flex flex-col justify-center items-center'>
         <form onSubmit={handleSubmit} className='flex flex-col md:w-4/12 w-full gap-y-4 p-3 md:p-0'>
-          {isLoading ? <Spinner/> : ``}
           <div className='flex flex-col gap-y-4'>
             <TextField
               id="outlined-email-input"
@@ -103,15 +101,16 @@ function Login() {
             Sign in
           </Button>
 
+          { isLoading ? <Spinner/> : `` }
 
-            <Button 
-              variant="contained"
-              className='bg-[#CCCCCC] text-slate-900 hover:bg-[#CCCCCC] lowercase'
-            >
-              <Link to={`/alumni/signup`}>
-                create account
-              </Link>
-            </Button>
+          <Button 
+            variant="contained"
+            className='bg-[#CCCCCC] text-slate-900 hover:bg-[#CCCCCC] lowercase'
+          >
+            <Link to={`/alumni/signup`}>
+              create account
+            </Link>
+          </Button>
 
           <Divider>or continue with</Divider>
 
