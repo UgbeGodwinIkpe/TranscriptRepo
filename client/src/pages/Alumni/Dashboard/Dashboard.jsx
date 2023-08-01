@@ -1,11 +1,12 @@
 // react imports
 import React from 'react'
+import { Table } from '../../../components'
 
 function Dashboard() {
   return (
     <div className='flex flex-1 flex-col bg-white rounded-md'>
-       <div className="flex flex-col m-auto">
-          <h4 className='font-bold text-slate-300'>Our team are working round the clock to ensure you have access to all functionalties ASAP</h4>
+       <div className="flex flex-col p-5">
+          <Table headers={[{title: 'S/no'}, {title: 'Student Name'}, {title: 'Year of grad.'} , {title: 'Grad Year'} ]}/>
         </div> 
     </div>
   )

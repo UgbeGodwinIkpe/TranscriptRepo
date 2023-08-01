@@ -45,7 +45,7 @@ function AlumniLayout() {
     ]
 
   return (
-    <div className='flex-1 grid grid-cols-1 md:grid-cols-5 bg-slate-100'>
+    <div className='flex-1 grid grid-cols-1 md:grid-cols-5 bg-[#6B3FA0] bg-opacity-5'>
         {/* sidebar */}
         <div className='bg-white md:block hidden'>
             <Sidebar menuItems={menuItems}/>
