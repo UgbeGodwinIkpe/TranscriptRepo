@@ -1,5 +1,5 @@
 import React from 'react'
-import { TranscriptDataItem } from '../../components'
+import { TranscriptDataItem } from '../../../components'
 
 function TranscriptData({title}) {
 

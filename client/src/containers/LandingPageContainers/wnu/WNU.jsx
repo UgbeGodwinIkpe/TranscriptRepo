@@ -2,7 +2,7 @@
 import React from 'react'
 
 // assets imports
-import wnuImg from '../../assets/wnuimg.png' 
+import wnuImg from '../../../assets/wnuimg.png' 
 
 // rrd imports
 import { Link } from 'react-router-dom'

@@ -8,7 +8,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 // assets imports
-import headerImg from '../../assets/headerimg.png'
+import headerImg from '../../../assets/headerimg.png'
 
 function Header() {
   return (

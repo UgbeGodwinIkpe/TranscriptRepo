@@ -1,5 +1,5 @@
 import React from 'react'
-import { TranscriptGridItem } from '../../components'
+import { TranscriptGridItem } from '../../../components'
 
 import {HiCheckCircle, HiTrash} from 'react-icons/hi2'
 

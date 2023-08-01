@@ -1,7 +1,7 @@
 import React from 'react'
 
 // asset imports
-import contactImg from '../../assets/contact.png'
+import contactImg from '../../../assets/contact.png'
 
 // mui imports
 import { Divider, TextField } from '@mui/material'

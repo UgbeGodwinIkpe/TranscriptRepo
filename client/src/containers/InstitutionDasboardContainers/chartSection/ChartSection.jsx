@@ -1,7 +1,7 @@
 import React from 'react';
 
 // componets imports
-import { LineChart } from '../../components';
+import { LineChart } from '../../../components';
 
 function chartSection() {
   return (
