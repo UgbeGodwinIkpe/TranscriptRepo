@@ -23,7 +23,7 @@ function RecentRequests() {
   ]
 
   return (
-    <div className='md:block hidden flex flex-col md:p-5 p-3'>
+    <div className='md:block hidden flex flex-col'>
         <Table headers={headers}/>
     </div>
   )

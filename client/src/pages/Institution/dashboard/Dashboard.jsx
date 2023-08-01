@@ -24,7 +24,7 @@ function Dashboard() {
         </div>
 
         <div className='flex flex-col gap-y-4'>
-            <div className='grid grid-cols-1 p-5 rounded-md bg-white'>
+            <div className='grid grid-cols-1 border rounded-md bg-white p-5'>
                 <TranscriptData title={`Transcript Data`} />
             </div>
 

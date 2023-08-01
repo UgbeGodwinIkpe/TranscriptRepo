@@ -29,6 +29,7 @@ function TranscriptData({title}) {
   return (
     <div className='flex flex-col gap-y-4'>
         {title && <h4 className='font-bold'>{title}</h4>}
+        <hr />
         <div className='flex flex-col gap-y-2'>
             {dataItems && dataItems.map((dataItem)=> (
                 <TranscriptDataItem 
