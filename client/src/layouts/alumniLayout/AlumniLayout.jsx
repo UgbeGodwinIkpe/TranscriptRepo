@@ -25,13 +25,13 @@ function AlumniLayout() {
         },
     
         {
-            title: 'Alumni List',
+            title: 'Transcripts',
             icon: <HiListBullet size={20}/>,
-            path: ''
+            path: `/alumni/${user.alumni._id}/transcripts/new`
         },
     
         {
-            title: 'Request',
+            title: 'Notification',
             icon: <HiOutlineBell size={20}/>,
             path: ''
         },

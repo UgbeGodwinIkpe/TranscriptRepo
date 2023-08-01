@@ -10,3 +10,4 @@ export { default as InstitutionSignup } from './Institution/Auth/signup/Signup';
 export { default as InstitutionDashboard } from './Institution/dashboard/Dashboard';
 export { default as ForgotPassword } from './Alumni/Auth/forgotPassword/Forgotpassword';
 export { default as ChangePassword } from './Alumni/Auth/changePassword/ChangePassword';
+export { default as NewTranscriptRequestPage } from './Alumni/Transcripts/NewRequestPage/NewRequestPage';
