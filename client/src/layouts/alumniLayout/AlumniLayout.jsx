@@ -21,13 +21,14 @@ function AlumniLayout() {
         {
             title: 'Dashboard',
             icon: <HiOutlineRectangleGroup size={20}/>,
-            path: `/alumni/${user.alumni._id}/dashboard`
+            path: `/alumni/${user.alumni._id}/dashboard`,
+            isActive: true
         },
     
         {
             title: 'Transcripts',
             icon: <HiListBullet size={20}/>,
-            path: `/alumni/${user.alumni._id}/transcripts/new`
+            path: `/alumni/${user.alumni._id}/transcripts/`
         },
     
         {

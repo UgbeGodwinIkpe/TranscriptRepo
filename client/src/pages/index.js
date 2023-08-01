@@ -11,3 +11,4 @@ export { default as InstitutionDashboard } from './Institution/dashboard/Dashboa
 export { default as ForgotPassword } from './Alumni/Auth/forgotPassword/Forgotpassword';
 export { default as ChangePassword } from './Alumni/Auth/changePassword/ChangePassword';
 export { default as NewTranscriptRequestPage } from './Alumni/Transcripts/NewRequestPage/NewRequestPage';
+export { default as TranscriptTrackingPage } from './Alumni/Transcripts/TrackingPage/TrackingPage';

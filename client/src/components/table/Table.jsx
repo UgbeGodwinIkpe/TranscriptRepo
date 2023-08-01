@@ -1,7 +1,6 @@
 import React from 'react'
-import TranscriptItem from '../transcriptItem/TranscriptItem'
 
-function Table({headers, items}) {
+function Table({headers, item}) {
   return (
     <div className='grid grid-cols-1 '>
         <table className='table-auto  grid grid-cols-1 gap-y-[8px] border rounded-md p-1'>
@@ -17,11 +16,7 @@ function Table({headers, items}) {
             <hr />
             <tbody>
                 <tr className='grid grid-cols-1 gap-y-[8px]'>
-                    <TranscriptItem/>
-                    <TranscriptItem/>
-                    <TranscriptItem/>
-                    <TranscriptItem/>
-                    <TranscriptItem/>
+                    {item && item}
                 </tr>
             </tbody>
         </table>
