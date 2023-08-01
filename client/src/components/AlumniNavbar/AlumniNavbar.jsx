@@ -1,21 +1,26 @@
 import React from 'react'
 
+import { HiOutlineEnvelope, HiOutlineMapPin, HiOutlineTruck } from 'react-icons/hi2'
+
 function AlumniNavbar() {
 
     const menu = [
         {
             title: 'Request',
-            icon: ''
+            icon: <HiOutlineEnvelope/>,
+            isActive: true
         },
 
         {
             title: 'Track process',
-            icon: ''
+            icon: <HiOutlineMapPin/>,
+            isActive: false
         },
 
         {
             title: 'Delivery Request',
-            icon: ''
+            icon: <HiOutlineTruck/>,
+            isActive: false
         },
     ]
 
@@ -27,7 +32,10 @@ function AlumniNavbar() {
         <hr />
         <div className="grid grid-cols-3 text-center">
             {menu && menu.map((item)=>(
-                <span className='border-b-2 border-white hover:border-b-2 hover:border-[#6B3FA0] bg-opacity-5 hover:bg-slate-50 cursor-pointer p-2'>{item.title}</span>
+                <div key={item.title} className={`${item.isActive ? `border-b-2 border-[#6B3FA0] bg-opacity-5 bg-slate-50 bg-opacity-5` : `border-white`} flex flex-col md:flex-row items-center justify-center gap-x-4 border-b-2  hover:bg-slate-50 cursor-pointer p-2`}>
+                    {item.icon} 
+                    <h4>{item.title}</h4>
+                </div>
             ))}
             
         </div>

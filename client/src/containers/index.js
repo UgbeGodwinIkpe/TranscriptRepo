@@ -9,3 +9,6 @@ export {default as Footer} from './LandingPageContainers/footer/Footer';
 export {default as RecentRequests} from './InstitutionDasboardContainers/recentRequests/RecentRequests';
 export {default as TranscriptGrid} from './InstitutionDasboardContainers/transcriptGrid/TranscriptGrid';
 export {default as TranscriptData} from './InstitutionDasboardContainers/transcriptData/TranscriptData'
+
+
+export {default as AlumniDetailsForm} from './AlumniNewRequestPageContainers/AlumniDetailsForm/AlumniDetailsForm';
