@@ -16,7 +16,7 @@ const htmlContent = fs.readFileSync('./views/welcomeEmail.html', 'utf-8')
 // === funtion to create token==
 // ============================= 
 const createToken = (_id) => {
-    jwt.sign({_id}, process.env.SECRET_KEY, {expiresIn: '1d'})
+    return jwt.sign({_id}, process.env.SECRET_KEY, {expiresIn: '1d'})
 }
 
 // ===========================================
