@@ -44,14 +44,16 @@ function Navbar() {
             {user 
             
             ? (
-                <div className="hidden md:block flex items-center justify-between gap-x-4">
+                <div className='hidden md:flex md:items-center justify-between gap-x-4'>
                     <span className='flex gap-x-2'>Welcome <h4 className='text-[#6B3FA0] font-semibold'>{user.alumni.fullName}</h4></span>
-                    <Button
-                        variant='outlined'
-                        onClick={onLogout}
-                        className='border-[#6B3FA0] text-[#6B3FA0] hover:border-[#6B3FA0] hover:text-[#6B3FA0] hover:bg-[#6B3FA0] hover:bg-opacity-10'
-                    >Logout
-                    </Button>
+                    <div className="flex">
+                        <Button
+                            variant='outlined'
+                            onClick={onLogout}
+                            className='border-[#6B3FA0] text-[#6B3FA0] hover:border-[#6B3FA0] hover:text-[#6B3FA0] hover:bg-[#6B3FA0] hover:bg-opacity-10'
+                        >Logout
+                        </Button>
+                    </div>
                 </div>
             )
             
