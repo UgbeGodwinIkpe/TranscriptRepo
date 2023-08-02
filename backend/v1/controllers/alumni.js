@@ -108,7 +108,7 @@ exports.createAlumni = async (req, res) => {
         await Alumni.sendEmail(emailAddress, 'Welcome to Transcript-Digita', `verfication code: ${verificationCode}`)
 
         // return status code and data as json
-        return res.status(200).json({alumni, token}) 
+        return res.status(200).json({alumni: alumni, token: token}) 
 
    } catch (error) {
         // return error code and message 
