@@ -51,7 +51,6 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(formData)
 
     const {emailAddress, password} = formData
 
@@ -61,6 +60,10 @@ function Login() {
     }
 
     dispatch(login(userData))  
+  }
+
+  if(isLoading){
+    return <Spinner/>
   }
 
   return (
@@ -100,8 +103,6 @@ function Login() {
           >
             Sign in
           </Button>
-
-          { isLoading ? <Spinner/> : `` }
 
           <Button 
             variant="contained"
