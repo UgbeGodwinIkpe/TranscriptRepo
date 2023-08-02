@@ -7,9 +7,9 @@ import { FaFacebookF, FaLinkedin, FaInstagram, FaTwitter } from 'react-icons/fa6
 
 function Footer() {
   return (
-    <div className='h-[300px] md:w-full  flex flex-col text-white'>
+    <div className='md:h-[300px] md:w-full  flex flex-col text-white'>
         <div className="flex flex-col bg-[#6B3FA0] -mx-5 p-5">
-            <div className='grid grid-cols-2 md:grid-cols-5 gap-x-[20px] h-72'>
+            <div className='grid grid-cols-1 gap-y-5 md:grid-cols-5 gap-x-[20px] md:h-72'>
                 <div>
                     <h4>TranscriptDigita</h4>
                 </div>
