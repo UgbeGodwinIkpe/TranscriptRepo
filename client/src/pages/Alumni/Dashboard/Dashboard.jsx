@@ -3,7 +3,7 @@ import React from 'react'
 import {HiOutlinePlusSmall} from 'react-icons/hi2';
 
 // component imports
-import { Table } from '../../../components'
+import { Information, Progress, Table } from '../../../components'
 
 // mui imports
 import { Button } from '@mui/material'
@@ -27,12 +27,12 @@ function Dashboard() {
             className='bg-blue-400'
             endIcon={<HiOutlinePlusSmall/>}
           >
-            New Request
+            New Requestorm
           </Button>
         </Link>
       </div>
 
-       <div className="flex flex-col p-5">
+       <div className="flex flex-col p-5 gap-y-5">
           <Table headers={[{title: 'S/no'}, {title: 'Student Name'}, {title: 'Year of grad.'} , {title: 'Grad Year'} ]}/>
         </div> 
     </div>
