@@ -1,9 +1,9 @@
 // react imports
 import React from 'react'
-import {HiOutlinePlusSmall} from 'react-icons/hi2';
+import {HiOutlinePlusSmall, HiChevronRight} from 'react-icons/hi2';
 
 // component imports
-import { Information, Progress, Table } from '../../../components'
+import { Information, Progress, Table, TranscriptGridItem } from '../../../components'
 
 // mui imports
 import { Button } from '@mui/material'
@@ -33,7 +33,7 @@ function Dashboard() {
       </div>
 
        <div className="flex flex-col p-5 gap-y-5">
-          <Table headers={[{title: 'S/no'}, {title: 'Student Name'}, {title: 'Year of grad.'} , {title: 'Grad Year'} ]}/>
+          <Table headers={[{title: 'Available schools'}]} item={ [1, 2, 3, 4, 5].map((item)=>(<TranscriptGridItem data={`University of Jos`} icon={<HiChevronRight/>}/>))}/>
         </div> 
     </div>
   )
