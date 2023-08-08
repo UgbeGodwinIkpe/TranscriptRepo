@@ -52,9 +52,9 @@ function AlumniLayout() {
             <Sidebar menuItems={menuItems}/>
         </div>
 
-        <div className='md:col-span-4 flex flex-col '>
+        <div className='md:col-span-4 flex-1 overflow-y-scroll flex flex-col '>
             <Navbar/>
-            <div className='flex-1 flex flex-col overflow-y-auto p-4 bg-slate-100'>
+            <div className='flex-1 flex flex-col p-4 bg-slate-100'>
                 <Outlet/>
             </div>
         </div>
