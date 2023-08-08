@@ -40,7 +40,7 @@ function Navbar() {
             <div className='md:hidden'>
                 <Link to={`/`} className='font-bold'>TranscriptDigita</Link>
             </div>
-            {user 
+            {user && user.alumni.isVerified == true
             
             ? (
                 <>
