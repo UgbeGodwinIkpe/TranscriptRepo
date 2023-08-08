@@ -10,6 +10,9 @@ import { Link } from 'react-router-dom'
 function sidebar({menuItems}) {
   return (
    <div className="flex items-center md:block hidden">
+        <div className='md:p-5'>
+            <Link to={`/`} className='font-bold'>TranscriptDigita</Link>
+        </div>
         <List className='p-2 gap-y-2 flex flex-col'>
             {menuItems && menuItems.map((menuItem)=>(
                 <Link 

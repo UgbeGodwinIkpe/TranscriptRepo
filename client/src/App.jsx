@@ -99,41 +99,41 @@ function App() {
     
           ]
         },
+      ]
+    },
+
+    {
+      path: '/alumni',
+      element: user ? <AlumniLayout/> : <Navigate to={`/alumni/login`} /> ,
+      errorElement: <ErrorPage/>,
+      children: [
 
         {
-          path: '/alumni',
-          element: user ? <AlumniLayout/> : <Navigate to={`/alumni/login`} /> ,
-          errorElement: <ErrorPage/>,
-          children: [
+          path: '/alumni/:id/dashboard',
+          element: user ? <AlumniDashboard/> : <Navigate to={`/alumni/login`} />,
+          errorElement: <ErrorPage/>
+        },
 
-            {
-              path: '/alumni/:id/dashboard',
-              element: user ? <AlumniDashboard/> : <Navigate to={`/alumni/login`} />,
-              errorElement: <ErrorPage/>
-            },
+        {
+          path: '/alumni/:id/change-password',
+          element: user ? <ChangePassword /> : <Navigate to={`/alumni/login`} />,
+          errorElement: <ErrorPage/>
+        },
+        {
+          path: '/alumni/:id/transcripts/',
+          element: user ? <TranscriptTrackingPage/> : <Navigate to={`/alumni/login`} />,
+          errorElement: <ErrorPage/>
+        },
 
-            {
-              path: '/alumni/:id/change-password',
-              element: user ? <ChangePassword /> : <Navigate to={`/alumni/login`} />,
-              errorElement: <ErrorPage/>
-            },
-            {
-              path: '/alumni/:id/transcripts/',
-              element: user ? <TranscriptTrackingPage/> : <Navigate to={`/alumni/login`} />,
-              errorElement: <ErrorPage/>
-            },
+        {
+          path: '/alumni/:id/transcripts/new',
+          element: user ? <NewTranscriptRequestPage/> : <Navigate to={`/alumni/login`} />,
+          errorElement: <ErrorPage/>
+        },
+      ]  
 
-            {
-              path: '/alumni/:id/transcripts/new',
-              element: user ? <NewTranscriptRequestPage/> : <Navigate to={`/alumni/login`} />,
-              errorElement: <ErrorPage/>
-            },
-          ]  
-
-        }
-
-      ]
     }
+
   ])
 
   return (

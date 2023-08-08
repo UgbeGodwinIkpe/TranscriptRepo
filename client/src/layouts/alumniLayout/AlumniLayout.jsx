@@ -8,7 +8,7 @@ import { Outlet } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 
 // components import
-import { Sidebar } from '../../components'
+import { Navbar, Sidebar } from '../../components'
 
 // icons imports
 import {HiOutlineRectangleGroup, HiListBullet, HiOutlineBell, HiOutlineCog6Tooth} from 'react-icons/hi2'
@@ -46,14 +46,17 @@ function AlumniLayout() {
     ]
 
   return (
-    <div className='flex-1 grid grid-cols-1 md:grid-cols-5  w-full h-full'>
+    <div className='flex-1 grid grid-cols-1 md:grid-cols-5 w-full fixed h-screen'>
         {/* sidebar */}
         <div className='bg-white md:block hidden'>
             <Sidebar menuItems={menuItems}/>
         </div>
 
-        <div className='md:col-span-4 flex flex-col p-4 overflow-y-auto'>
-            <Outlet/>
+        <div className='md:col-span-4 flex flex-col '>
+            <Navbar/>
+            <div className='flex-1 flex flex-col overflow-y-auto p-4 bg-slate-100'>
+                <Outlet/>
+            </div>
         </div>
     </div>
   )

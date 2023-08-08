@@ -36,34 +36,38 @@ function Navbar() {
 
   return (
    <div className="grid grid-cols-1">
-        <div className='shadow p-3 md:p-5 flex justify-between items-center'>
-            <div>
+        <div className='p-3 md:p-5 flex justify-between items-center'>
+            <div className='md:hidden'>
                 <Link to={`/`} className='font-bold'>TranscriptDigita</Link>
             </div>
-
             {user 
             
             ? (
-                <div className='hidden md:flex md:items-center justify-between gap-x-4'>
-                    <span className='flex gap-x-2'>Welcome <h4 className='text-[#6B3FA0] font-semibold'>{user.alumni.fullName}</h4></span>
-                    <Link to={`/alumni/${user.alumni._id}/dashboard`} className='bg-[#6B3FA0] px-2 p-1 text-white rounded-full'>
-                        <small>Dashboard</small>
-                    </Link>
-                    <div className="flex">
-                        <Button
-                            variant='outlined'
-                            onClick={onLogout}
-                            className='border-[#6B3FA0] text-[#6B3FA0] hover:border-[#6B3FA0] hover:text-[#6B3FA0] hover:bg-[#6B3FA0] hover:bg-opacity-10'
-                        >Logout
-                        </Button>
+                <>
+                    <div className='hidden md:flex md:items-center justify-between gap-x-4 w-full'>
+                        <span className='flex gap-x-2'>Welcome <h4 className='text-[#6B3FA0] font-semibold'>{user.alumni.fullName}</h4></span>
+                        <div className="flex gap-x-4">
+                            <Link to={`/alumni/${user.alumni._id}/dashboard`} className='bg-[#6B3FA0] px-2 p-1 text-white rounded-full'>
+                                <small>Dashboard</small>
+                            </Link>
+                            <Button
+                                variant='outlined'
+                                onClick={onLogout}
+                                className='border-[#6B3FA0] text-[#6B3FA0] hover:border-[#6B3FA0] hover:text-[#6B3FA0] hover:bg-[#6B3FA0] hover:bg-opacity-10'
+                            >Logout
+                            </Button>
+                        </div>
                     </div>
-                </div>
+                </>
             )
             
             
             :
                 (<> 
-                    <div className='justify-evenly flex-1 hidden md:flex'>
+                    <div>
+                        <Link to={`/`} className='font-bold'>TranscriptDigita</Link>
+                    </div>
+                    <div className='md:text-[14px] justify-evenly flex-1 hidden md:flex'>
                         <Link to={`/`} className='flex'>
                             <p>Home</p>
                         </Link>
