@@ -44,7 +44,7 @@ function Signup() {
 
         dispatch(reset())
 
-    }, [user, isError, isSuccess, message, navigate, dispatch])
+    }, [user, isError, isSuccess, message, dispatch])
 
     const inputChange = (e) => {
         setFormData((prevState) => ({

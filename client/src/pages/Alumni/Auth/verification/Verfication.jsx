@@ -31,7 +31,7 @@ function Verfication() {
 
         dispatch(reset())
 
-    }, [user, isError, isSuccess, message, navigate, dispatch])
+    }, [user, isError, isSuccess, message, dispatch])
   
     useEffect(() => {
       inputRefs.current[0].focus(); // Set focus on the first input field when the component mounts
