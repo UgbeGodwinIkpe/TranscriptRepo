@@ -2,9 +2,9 @@
 import React from 'react'
 
 // assets imports
-import servicesImg1 from '../../assets/services1.png' 
-import servicesImg2 from '../../assets/services2.png' 
-import servicesImg3 from '../../assets/services3.png' 
+import servicesImg1 from '../../../assets/services1.png' 
+import servicesImg2 from '../../../assets/services2.png' 
+import servicesImg3 from '../../../assets/services3.png' 
 
 
 function Services() {
@@ -15,7 +15,7 @@ function Services() {
             <p className='font-light md:text-[16px]'>Unlock the Convinience of our streamlined services and experience the power of hassle free transcript retrieval. Say good bye to ime consuming paperwork and frustrating bureaucracy.</p>
         </div>
         
-        <div className='w-full grid grid-cols-2 md:grid-cols-4 md:gap-x-[20px] gap-[20px]'>
+        <div className='w-full grid grid-cols-1 md:grid-cols-4 md:gap-x-[20px] gap-[20px]'>
             <div className='flex flex-col border rounded-[5px]'>
                 <img src={servicesImg1} alt="services1" />
                 <div className="flex flex-col p-3">
