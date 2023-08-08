@@ -3,13 +3,18 @@ import React from 'react'
 import { HiOutlineEnvelope, HiOutlineMapPin, HiOutlineTruck } from 'react-icons/hi2'
 import { Link } from 'react-router-dom'
 
+import {useSelector} from 'react-redux'
+
 function AlumniNavbar() {
+
+    const {user} = useSelector((state) => state.auth)
 
     const menu = [
         {
             title: 'Request',
             icon: <HiOutlineEnvelope/>,
-            isActive: true
+            isActive: true,
+            path: `/alumni/${user._id}/transcripts/new`
         },
 
         {

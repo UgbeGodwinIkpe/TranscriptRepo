@@ -46,6 +46,9 @@ function Navbar() {
             ? (
                 <div className='hidden md:flex md:items-center justify-between gap-x-4'>
                     <span className='flex gap-x-2'>Welcome <h4 className='text-[#6B3FA0] font-semibold'>{user.alumni.fullName}</h4></span>
+                    <Link to={`/alumni/${user.alumni._id}/dashboard`} className='bg-[#6B3FA0] px-2 p-1 text-white rounded-full'>
+                        <small>Dashboard</small>
+                    </Link>
                     <div className="flex">
                         <Button
                             variant='outlined'
