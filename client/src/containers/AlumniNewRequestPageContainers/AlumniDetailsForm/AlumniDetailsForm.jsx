@@ -26,7 +26,7 @@ function AlumniDetailsForm() {
       ];
 
   return (
-    <div className='flex flex-col gap-y-4 bg-white p-5 flex-grow shadow-lg my-auto rounded-lg'>
+    <div className='flex flex-col gap-y-4 bg-white p-5 my-auto rounded-lg'>
         <h4 className='font-bold text-center'>Fill the Form below</h4>
         <p className='text-[14px] font-light'>When applying for your transcript please ensure that you ;</p>
         <ul className='p-2 border border-green-700 text-[12px] rounded-lg bg-green-50 text-green-700 gap-y-1'>

@@ -19,8 +19,8 @@ function Dashboard() {
   const { user } = useSelector((state) => state.auth)
 
   return (
-    <div className='flex flex-1 flex-col bg-white rounded-md md:p-5'>
-      {/* <div className='flex justify-end'>
+    <div className='flex flex-1 flex-col bg-white rounded-md md:p-5 gap-y-4'>
+      <div className='flex justify-end'>
         <Link to={`/alumni/${user._id}/transcripts/new`}>
           <Button
             variant='contained'
@@ -30,7 +30,7 @@ function Dashboard() {
             New Requestorm
           </Button>
         </Link>
-      </div> */}
+      </div>
 
        <div className="flex flex-col gap-y-5">
           <Table headers={[{title: 'Available schools'}]} item={ [1, 2, 3, 4, 5].map((item)=>(<TranscriptGridItem data={`University of Jos`} icon={<HiChevronRight/>}/>))}/>

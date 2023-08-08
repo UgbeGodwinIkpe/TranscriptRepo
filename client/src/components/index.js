@@ -6,6 +6,5 @@ export { default as Table } from './table/Table';
 export { default as TranscriptGridItem } from './transcriptGridItem/TranscriptGridItem'
 export { default as TranscriptDataItem } from './transcriptDataItem/TranscriptDataItem'
 export { default as Spinner } from './Spinner/Spinner';
-export { default as AlumniNavbar } from './AlumniNavbar/AlumniNavbar';
 export {default as Progress} from './Progress/Progress';
 export { default as Information } from './Information/Information';

@@ -11,7 +11,7 @@ import { useSelector } from 'react-redux';
 import { Navbar, Sidebar } from '../../components'
 
 // icons imports
-import {HiOutlineRectangleGroup, HiListBullet, HiOutlineBell, HiOutlineCog6Tooth} from 'react-icons/hi2'
+import {HiOutlineRectangleGroup, HiListBullet, HiOutlineBell, HiOutlineCog6Tooth, HiViewfinderCircle} from 'react-icons/hi2'
 
 function AlumniLayout() {
 
@@ -26,8 +26,8 @@ function AlumniLayout() {
         },
     
         {
-            title: 'Transcripts',
-            icon: <HiListBullet size={20}/>,
+            title: 'Tracking',
+            icon: <HiViewfinderCircle size={20}/>,
             path: `/alumni/${user.alumni._id}/transcripts/`
         },
     
