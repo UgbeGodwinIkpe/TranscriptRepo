@@ -19,7 +19,7 @@ function Dashboard() {
   const { user } = useSelector((state) => state.auth)
 
   return (
-    <div className='flex flex-1 flex-col bg-white rounded-md md:p-5 gap-y-4'>
+    <div className='flex flex-1 flex-col bg-white rounded-md md:p-5 p-2 gap-y-4'>
       <div className='flex justify-end'>
         <Link to={`/alumni/${user._id}/transcripts/new`}>
           <Button
