@@ -31,6 +31,27 @@ const generateRandomNumber = () => {
     return formattedNumber;
 }
 
+// function to get all Alumnus
+exports.getAllInstitutions = async (req, res) => {
+    try {
+        
+        // find all alumni in database
+        let allInstitutions = await Institution.find({})
+
+        // if not allAlumnus throw error 
+        if(!allInstitutions){
+            throw Error('resource could not be located !!')
+        }
+
+        // return status and data as json
+        return res.status(200).json(allInstitutions)
+
+    } catch (error) {
+        // return status and error as json
+        return res.status(403).json({message: error.message})
+    }
+}
+
 
 exports.registerInstitution = async (req, res) => {
 

@@ -9,7 +9,7 @@ const express = require('express'),
 // ======= routes ==============
 // ============================= 
 router.route('/')
-    .get()
+    .get(controller.getAllInstitutions)
     .post(controller.registerInstitution)
 
 router.route('/login')
