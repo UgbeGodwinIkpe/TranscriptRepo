@@ -73,7 +73,7 @@ institutionSchema.statics.signup = async function (name, emailAddress, location,
 }
 
 // sending email to staff
-institutionSchema.statics.sendEmail = async function (email, message) {
+institutionSchema.statics.sendEmail = async function (email, subject, message) {
     let transport = nodemailer.createTransport(smtpTransport({
         host: 'smtp.gmail.com',
         secure: true,
@@ -87,14 +87,10 @@ institutionSchema.statics.sendEmail = async function (email, message) {
     const info = await transport.sendMail({
         from: process.env.EMAIL_USERNAME,
         to: email,
-        subject: 'INVITATION: RecordDigita Signup invite',
+        subject: subject,
         text: message
     }, (err, sent)=>{
-        if(err){
-            console.log('error send email')     
-        }else{
-            console.log('succesfully sent', sent)
-        }
+        err ? console.log('error send email') : console.log('succesfully sent', sent)     
     })
 }
 
