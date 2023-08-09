@@ -15,8 +15,8 @@ function SelectLogin() {
 
     const [hover, setHover] = useState(false)
   return (
-    <div className='md:overflow-y-hidden overflow-y-scroll flex flex-1 justify-center justify-items-center'>
-        <div className="p-5 rounded-lg md:w-8/12 w-full gap-y-8 flex flex-col">
+    <div className='overflow-y-auto flex flex-1 justify-center justify-items-center'>
+        <div className="p-5 rounded-lg w-full gap-y-8 flex flex-col">
 
             <h4 className='text-center font-bold'>Continue as</h4>
 
@@ -27,7 +27,7 @@ function SelectLogin() {
                     <Link to={`/institution/login`}>
                         <Button
                             variant='contained'
-                            className={`hover:text-white hover:bg-[#6B3FA0] ${hover ? `text-white bg-[#6B3FA0]` : `bg-white text-[#6B3FA0]`}`}
+                            className={`hover:text-white hover:bg-[#6B3FA0] lowercase ${hover ? `text-white bg-[#6B3FA0]` : `bg-slate-200 text-slate-500`}`}
                             onMouseOver={()=>{setHover(true)}}
                             onMouseOut={()=>{setHover(false)}}
                         >  
@@ -42,7 +42,7 @@ function SelectLogin() {
                     <Link to={`/alumni/login`}> 
                         <Button
                             variant='contained'
-                            className={`hover:bg-white hover:text-[#6B3FA0] ${hover ? `bg-white text-[#6B3FA0]` : `text-white bg-[#6B3FA0]`}`}
+                            className={`hover:bg-slate-200 hover:text-slate-500 lowercase ${hover ? `bg-slate-200 text-slate-500` : `text-white bg-[#6B3FA0]`}`}
                             onMouseOver={()=>{setHover(true)}}
                             onMouseOut={()=>{setHover(false)}}
                         >

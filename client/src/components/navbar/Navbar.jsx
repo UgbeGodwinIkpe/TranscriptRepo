@@ -37,9 +37,6 @@ function Navbar() {
   return (
    <div className="grid grid-cols-1">
         <div className='p-3 md:p-5 flex justify-between items-center'>
-            <div className='md:hidden'>
-                <Link to={`/`} className='font-bold'>TranscriptDigita</Link>
-            </div>
             {user && user.alumni.isVerified == true
             
             ? (
