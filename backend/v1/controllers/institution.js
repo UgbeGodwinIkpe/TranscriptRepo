@@ -5,8 +5,7 @@ require('dotenv').config()
 const Institution = require('../models/institution'),
     mongoose = require('mongoose'),
     jwt = require('jsonwebtoken'),
-    validator = require('validator'),
-    bcrypt = require('bcryptjs')
+    validator = require('validator')
 
 // =============================
 // === funtion to create token==
