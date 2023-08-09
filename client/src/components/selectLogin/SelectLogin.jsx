@@ -2,7 +2,7 @@
 import { Button } from '@mui/material'
 
 // react imports
-import React from 'react'
+import React, { useState } from 'react'
 
 // assets imports
 import university from '../../assets/university.png'
@@ -12,6 +12,8 @@ import alumni from '../../assets/alumni.png'
 import { Link } from 'react-router-dom'
 
 function SelectLogin() {
+
+    const [hover, setHover] = useState(false)
   return (
     <div className='md:overflow-y-hidden overflow-y-scroll flex flex-1 justify-center justify-items-center'>
         <div className="p-5 rounded-lg md:w-8/12 w-full gap-y-8 flex flex-col">
@@ -25,8 +27,10 @@ function SelectLogin() {
                     <Link to={`/institution/login`}>
                         <Button
                             variant='contained'
-                            className='bg-[#6B3FA0] hover:bg-white hover:text-[#6B3FA0]'
-                        >
+                            className={`hover:text-white hover:bg-[#6B3FA0] ${hover ? `text-white bg-[#6B3FA0]` : `bg-white text-[#6B3FA0]`}`}
+                            onMouseOver={()=>{setHover(true)}}
+                            onMouseOut={()=>{setHover(false)}}
+                        >  
                             continue
                         </Button>
                     </Link>
@@ -38,7 +42,9 @@ function SelectLogin() {
                     <Link to={`/alumni/login`}> 
                         <Button
                             variant='contained'
-                            className='hover:text-white hover:bg-[#6B3FA0] bg-white text-[#6B3FA0]'
+                            className={`hover:bg-white hover:text-[#6B3FA0] ${hover ? `bg-white text-[#6B3FA0]` : `text-white bg-[#6B3FA0]`}`}
+                            onMouseOver={()=>{setHover(true)}}
+                            onMouseOut={()=>{setHover(false)}}
                         >
                             continue
                         </Button>
