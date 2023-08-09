@@ -63,7 +63,7 @@ exports.registerInstitution = async (req, res) => {
         const verificationCode =  await generateRandomNumber()
 
         // signup user using statics func
-        const institution = await Institution.signup(name, emailAddress, location, password)
+        const institution = await Institution.signup(name, emailAddress, location, password, verificationCode)
 
         // generate token
         const token = await createToken(institution._id)
