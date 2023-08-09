@@ -8,7 +8,8 @@ const express = require('express'),
       path = require('path'),
       bodyParser = require('body-parser'),
       models = require('./models/'),
-      alumniRoutes = require('./routes/alumni')
+      alumniRoutes = require('./routes/alumni'),
+      institutionRoutes = require('./routes/institution')
       
 // using cors 
 app.use(cors())
@@ -37,6 +38,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/v1/alumnus', alumniRoutes)
+app.use('/api/v1/institution', institutionRoutes)
 
 // ===========================================
 // ============ serving app ==================

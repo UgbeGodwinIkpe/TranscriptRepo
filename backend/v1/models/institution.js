@@ -12,13 +12,15 @@ const mongoose = require('mongoose'),
 // =======================================
 
 const institutionSchema = new mongoose.Schema({
-    name: {type: String, required: true, unique: true},
-    emailAddress: {type: String, required: true, unique: true},
-    password: {type: String, required: true},
-    transcriptTypes: [],
-    staff: [],
-    isActive: {type: Boolean, default: false},
-    isVerified: {type: Boolean, default: false}
+    name:               {type: String, required: true, unique: true},
+    emailAddress:       {type: String, required: true, unique: true},
+    password:           {type: String, required: true},
+    location:           {type: String, required: true},
+    transcriptTypes:    [],
+    staff:              [],
+    verificationCode:  {type: Number},
+    isActive:           {type: Boolean, default: true},
+    isVerified:         {type: Boolean, default: false}
 
 }, {timestamps: true})
 
@@ -64,11 +66,74 @@ institutionSchema.statics.signup = async function (name, emailAddress, location,
     const hash = await bcrypt.hash(password, salt)
 
     // saving instition in database
-    const instition = await this.create({name, emailAddress, location, password: hash, verfificationCode})
+    const institution = await this.create({name, emailAddress, location, password: hash, verfificationCode})
 
     // returning saved institution as json
-    return instition
+    return institution
 }
+
+// sending email to staff
+institutionSchema.statics.sendEmail = async function (email, message) {
+    let transport = nodemailer.createTransport(smtpTransport({
+        host: 'smtp.gmail.com',
+        secure: true,
+        port: 465,
+        auth: {
+            user: process.env.EMAIL_USERNAME,
+            pass: process.env.EMAIL_PASSWORD
+        }
+    }))
+
+    const info = await transport.sendMail({
+        from: process.env.EMAIL_USERNAME,
+        to: email,
+        subject: 'INVITATION: RecordDigita Signup invite',
+        text: message
+    }, (err, sent)=>{
+        if(err){
+            console.log('error send email')     
+        }else{
+            console.log('succesfully sent', sent)
+        }
+    })
+}
+
+// function to login admin
+institutionSchema.statics.login = async function (email, password) {
+
+    // validation
+    if(!email || !password){
+       throw Error('All fields must be filled')
+   }
+
+    // find an email in database   
+   const institution = await this.findOne({email})
+
+    // not exist throw error   
+   if(!institution){
+       throw Error('Incorrect email')
+   }
+
+   // if account inactive throw error    
+   if(!institution.isVerified){
+        throw Error('sorry your account is disabled')
+    }
+
+    // if account inactive throw error    
+   if(!institution.isActive){
+        throw Error('sorry your account is disabled')
+   }
+
+   const match = await bcrypt.compare(password, institution.password)
+
+   if(!match){
+       throw Error('Incorrect password')
+   }
+
+   return institution
+
+}
+
 
 
 // ======= modeling schema =====================
