@@ -18,7 +18,7 @@ const institutionSchema = new mongoose.Schema({
     location:           {type: String, required: true},
     transcriptTypes:    [],
     staff:              [],
-    verificationCode:  {type: Number},
+    verificationCode:  {type: String},
     isActive:           {type: Boolean, default: true},
     isVerified:         {type: Boolean, default: false}
 
@@ -29,7 +29,7 @@ const institutionSchema = new mongoose.Schema({
 // ======= statics functions ===================
 // =============================================
 
-institutionSchema.statics.signup = async function (name, emailAddress, location, password, verfificationCode) {
+institutionSchema.statics.signup = async function (name, emailAddress, location, password, verificationCode) {
     // check if all inputs are filled
     if(!name || !emailAddress || !location || !password){
         throw Error('All fields are required !')
@@ -66,7 +66,7 @@ institutionSchema.statics.signup = async function (name, emailAddress, location,
     const hash = await bcrypt.hash(password, salt)
 
     // saving instition in database
-    const institution = await this.create({name, emailAddress, location, password: hash, verfificationCode})
+    const institution = await this.create({name, emailAddress, location, password: hash, verificationCode})
 
     // returning saved institution as json
     return institution
