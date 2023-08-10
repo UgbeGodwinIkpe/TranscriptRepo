@@ -5,7 +5,7 @@ import {useSelector, useDispatch} from 'react-redux'
 import {logout, reset} from '../../features/auth/authSlice'
 
 // rrd imports
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 // material-ui  imports
 import { Button } from '@mui/material';
@@ -24,18 +24,8 @@ function Navbar() {
 
     const {user} = useSelector((state) => state.auth)
 
-    const navigate = useNavigate()
-
-    const dispatch = useDispatch()
-
-    const onLogout = () => {
-        dispatch(logout())
-        dispatch(reset())
-        navigate('/')
-    }
-
   return (
-   <div className="grid grid-cols-1">
+   <div className="grid grid-cols-1 bg-gradient-to-r from-[#6B3FA0] via-zinc-500 to-slate-400 bg-opacity-5">
         <div className='p-3 md:p-5 flex justify-between items-center'>
             {user && user.alumni.isVerified == true
             
@@ -47,12 +37,11 @@ function Navbar() {
                             <Link to={`/alumni/${user.alumni._id}/dashboard`} className='bg-[#6B3FA0] px-2 p-1 text-white rounded-full'>
                                 <small>Dashboard</small>
                             </Link>
-                            <Button
-                                variant='outlined'
-                                onClick={onLogout}
+                            <Link to={`/logout`}
+                                // onClick={onLogout}
                                 className='border-[#6B3FA0] text-[#6B3FA0] hover:border-[#6B3FA0] hover:text-[#6B3FA0] hover:bg-[#6B3FA0] hover:bg-opacity-10'
                             >Logout
-                            </Button>
+                            </Link>
                         </div>
                     </div>
                 </>
@@ -62,7 +51,7 @@ function Navbar() {
             :
                 (<> 
                     <div>
-                        <Link to={`/`} className='font-bold'>TranscriptDigita</Link>
+                        <Link to={`/`} className='font-bold text-white'>TranscriptDigita</Link>
                     </div>
                     <div className='md:text-[14px] justify-evenly flex-1 hidden md:flex'>
                         <Link to={`/`} className='flex'>
