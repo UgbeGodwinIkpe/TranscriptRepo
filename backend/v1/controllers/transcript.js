@@ -1,8 +1,8 @@
 // imports
 const Transcripts = require('../models/transcripts')
 
-const generateRefrenceId = (institution) =>{
-    return `T-001-${institution}`
+const generateRefrenceId = () =>{
+    return `T-001`
 }
 
 exports.getAllTranscripts = async (req, res) => {
@@ -19,6 +19,8 @@ exports.createNewRequest = async (req, res) => {
         // generate refrenceId
         const lastId = await Transcripts.findOne().sort({ _id: -1 }) 
 
+
+
         if(!lastId) {
             let newId = await generateRefrenceId(institution)
             return res.json(newId)
@@ -29,12 +31,12 @@ exports.createNewRequest = async (req, res) => {
         return res.json(splitted)
 
         // check if all required data are filled
-        // if(!referenceId || degreeType || institution || !faculty || !department || !matricNo || !yearOfGraduation || !program){
-        //     throw Error('All fields are required')
-        // }
+        if(!referenceId || degreeType || institution || !faculty || !department || !matricNo || !yearOfGraduation || !program){
+            throw Error('All fields are required')
+        }
 
         // getting userid from middleware
-        // const createdBy = req.user._id
+        const createdBy = req.user._id
 
         // creating new transcript request
 
