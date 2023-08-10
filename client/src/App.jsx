@@ -16,7 +16,7 @@ import { StyledEngineProvider } from '@mui/material'
 import { AlumniLayout, InstitutionLayout, Main } from './layouts'
 
 // pages imports
-import { Login, InstitutionLogin, InstitutionSignup, InstitutionDashboard, ErrorPage, ForgotPassword, ChangePassword, AlumniDashboard, LandingPage, AlumniSignup, AlumniVerification, AlumniResetPassword, NewTranscriptRequestPage, TranscriptTrackingPage } from './pages'
+import { Login, InstitutionLogin, InstitutionSignup, InstitutionDashboard, ErrorPage, ForgotPassword, ChangePassword, AlumniDashboard, LandingPage, AlumniSignup, AlumniVerification, AlumniResetPassword, NewTranscriptRequestPage, TranscriptTrackingPage, LogoutPage, TranscriptDetailPage } from './pages'
 
 // components imports
 import { SelectLogin } from './components'
@@ -41,6 +41,12 @@ function App() {
         {
           path: '/selectlogin',
           element: <SelectLogin/>,
+          errorElement: <ErrorPage/>
+        },
+
+        {
+          path: '/logout',
+          element: <LogoutPage/>,
           errorElement: <ErrorPage/>
         },
 
@@ -122,6 +128,12 @@ function App() {
         {
           path: '/alumni/:id/transcripts/',
           element: user ? <TranscriptTrackingPage/> : <Navigate to={`/alumni/login`} />,
+          errorElement: <ErrorPage/>
+        },
+
+        {
+          path: '/alumni/:id/transcripts/:id',
+          element: user ? <TranscriptDetailPage/> : <Navigate to={`/alumni/login`} />,
           errorElement: <ErrorPage/>
         },
 

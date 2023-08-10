@@ -12,3 +12,5 @@ export { default as ForgotPassword } from './Alumni/Auth/forgotPassword/Forgotpa
 export { default as ChangePassword } from './Alumni/Auth/changePassword/ChangePassword';
 export { default as NewTranscriptRequestPage } from './Alumni/Transcripts/NewRequestPage/NewRequestPage';
 export { default as TranscriptTrackingPage } from './Alumni/Transcripts/TrackingPage/TrackingPage';
+export { default as TranscriptDetailPage } from './Alumni/Transcripts/TranscriptDetail/TranscriptDetail';
+export { default as LogoutPage } from './Logout/Logout';
