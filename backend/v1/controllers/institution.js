@@ -86,6 +86,7 @@ exports.loginInstitution = async (req, res) => {
     const {emailAddress, password} = req.body
 
     try {
+        console.log(emailAddress)
         // login institution
         const institution = await Institution.login(emailAddress, password)
 
