@@ -95,15 +95,15 @@ institutionSchema.statics.sendEmail = async function (email, subject, message) {
 }
 
 // function to login admin
-institutionSchema.statics.login = async function (email, password) {
+institutionSchema.statics.login = async function (emailAddress, password) {
 
     // validation
-    if(!email || !password){
+    if(!emailAddress || !password){
        throw Error('All fields must be filled')
    }
 
     // find an email in database   
-   const institution = await this.findOne({email})
+   const institution = await this.findOne({emailAddress})
 
     // not exist throw error   
    if(!institution){

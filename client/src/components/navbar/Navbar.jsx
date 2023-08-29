@@ -25,7 +25,7 @@ function Navbar() {
     const {user} = useSelector((state) => state.auth)
 
   return (
-   <div className="grid grid-cols-1 bg-gradient-to-r from-[#6B3FA0] via-zinc-500 to-slate-400 bg-opacity-5">
+   <div className="grid grid-cols-1">
         <div className='p-3 md:p-5 flex justify-between items-center'>
             {user && user.alumni.isVerified == true
             
