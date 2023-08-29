@@ -25,7 +25,7 @@ function Navbar() {
     const {user} = useSelector((state) => state.auth)
 
   return (
-   <div className="grid grid-cols-1">
+   <div className="grid grid-cols-1 shadow">
         <div className='p-3 md:p-5 flex justify-between items-center'>
             {user && user.alumni.isVerified == true
             

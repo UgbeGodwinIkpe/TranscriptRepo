@@ -6,7 +6,7 @@ import { Contact, Footer, Header, OurPartners, Services, Testimonials, WNU } fro
 
 function LandingPage() {
   return (
-    <div className='flex flex-col flex-1 md:p-16 p-3 mt-5 gap-y-[50px]'>
+    <div className='flex flex-col flex-1 md:p-5 p-3 mt-5 gap-y-[50px]'>
         <Header/>
         <WNU/>
         <Services/>
